@@ -1,0 +1,26 @@
+{
+  "name": "humacare",
+  "version": "1.0.0",
+  "description": "application to help users book in-line medical consultations",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --report spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamimNumrah/HumaCare.git"
+  },
+  "keywords": [
+    "consultations",
+    "medical",
+    "appointments",
+    "doctor",
+    "patient"
+  ],
+  "author": "Tamim Ibn Aman, Akhila Kolluru, Tinting Lu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tamimNumrah/HumaCare/issues"
+  },
+  "homepage": "https://github.com/tamimNumrah/HumaCare#readme"
+}
