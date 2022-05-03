@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/tamimNumrah/HumaCare/issues"
   },
-  "homepage": "https://github.com/tamimNumrah/HumaCare#readme"
+  "homepage": "https://github.com/tamimNumrah/HumaCare#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
