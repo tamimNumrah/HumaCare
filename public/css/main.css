@@ -1,0 +1,8 @@
+#fixed .card .card-image img {
+    height: 180px;
+    object-fit: cover;
+}
+
+#fixed .card .card-content {
+    max-height: initial;
+}
