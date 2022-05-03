@@ -2,9 +2,10 @@
   "name": "humacare",
   "version": "1.0.0",
   "description": "application to help users book in-line medical consultations",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "mocha --report spec"
+    "start": "node server.js"
+    
   },
   "repository": {
     "type": "git",
