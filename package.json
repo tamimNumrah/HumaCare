@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/tamimNumrah/HumaCare#readme",
   "dependencies": {
+    "body-parser": "^1.20.0",
     "chai": "^4.3.6",
     "cors": "^2.8.5",
     "express": "^4.18.1",
