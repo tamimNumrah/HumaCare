@@ -1,4 +1,6 @@
 var express =require ('express');
+let dbConnect = require("./dbConnect");
+
 var app= express()
 
 app.use(express.static(__dirname+'/public'))
