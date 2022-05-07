@@ -1,45 +1,49 @@
-<h1>Register</h1>
-<%- include ('./partials/messages') %>
-<form action="/patients/register" method="POST">
-<div>
-    <label for="name">Name</label>
-    <input
-      type="name"
-      name="name"
-      placeholder="Enter Name"
-      value="<%= typeof name != 'undefined' ? name : '' %>"
-    />
-  
-</div>
-<div>
-    <label for="email">Email</label>
-    <input
-      type="email"
-      name="email"
-      placeholder="Enter Email"
-      value="<%= typeof email != 'undefined' ? email : '' %>"
-    />
-  </div>
-  <div >
-    <label for="password">Password</label>
-    <input
-      type="password"
-      name="password"
-      placeholder="Create Password"
-      value="<%= typeof password != 'undefined' ? password : '' %>"
-    />
-  </div>
-  <div >
-    <label for="password2">Confirm Password</label>
-    <input
-      type="password"
-      name="password2"
-      placeholder="Confirm Password"
-      value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
-    />
-  </div>
-  <button type="submit" class="btn btn-primary btn-block">
-    Register
-  </button>
-</form>
-<p >Have An Account? <a href="/patients/login">Login</a></p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <!-- Script tag for Fontawesome-->
+  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+    crossorigin="anonymous"></script>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huma Care</title>
+</head>
+
+<body>
+    <form class="login" action="/patients/register" method="POST">
+      <h1>Register</h1>
+      <%- include ('./partials/messages') %>
+      <div>
+        <label for="name">Name</label>
+        <input type="name" name="name" placeholder="Enter Name" value="<%= typeof name != 'undefined' ? name : '' %>" />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="Enter Email"
+          value="<%= typeof email != 'undefined' ? email : '' %>" />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Create Password"
+          value="<%= typeof password != 'undefined' ? password : '' %>" />
+      </div>
+      <div>
+        <label for="password2">Confirm Password</label>
+        <input type="password" name="password2" placeholder="Confirm Password"
+          value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">
+        Register
+      </button>
+      <p>Have An Account? <a href="/patients/login" style="color:cornsilk">Login</a></p>
+    </form>
+
+</body>
+</html>
