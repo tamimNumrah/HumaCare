@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- Script tag for Fontawesome-->
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+        crossorigin="anonymous"></script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Huma Care</title>
+</head>
+
+<body>
+    <form action="/patients/update" method="POST" class="patientProfileUpdate">
+        <h1> Update Profile </h1><br>
+        <%- include ('./partials/messages') %>
+        <input type="email" name="email" placeholder="Email Address" value="<%= patient.email %>" required /><br>
+        <input type="radio" id="male" name="gender" value="m">
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="f">
+        <label for="female">Female</label><br>
+        <input type="radio" id="undefined" name="gender" value="n">
+        <label for="undefined">Rather not say</label><br>
+        <button type="sumbit">Update</button>
+    </form>
+</body>
+</html>

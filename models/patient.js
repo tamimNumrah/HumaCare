@@ -15,6 +15,12 @@ const PatientSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    birthdate: {
+        type: Date
+    },
+    gender: {
+        type: String
     }
 });
 const Patient = mongoose.model("Patient", PatientSchema);

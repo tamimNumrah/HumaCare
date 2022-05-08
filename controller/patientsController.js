@@ -75,6 +75,30 @@ const login = (req, res, next) => {
     })(req, res, next);
 };
 
+const update = (req, res, next) => {
+    const { gender, email } = req.body; //extract the values
+    Patient.findOne({ email: email }).exec((err, patient) => {
+        if (patient) {
+            //user already exists
+            patient.gender = gender;
+            patient
+                .save()
+                .then( value=> {
+                    req.flash(
+                        "success_msg",
+                        "You have updated your profile!"
+                    ); // show success flsash message
+                    res.render("dashboard", {
+                        patient: patient
+                    });
+                })
+          } else {
+            errors.push({ msg: "User could not be found in database" });
+            res.render('register',{errors})  
+        }
+    });
+};
+
 const logout = (req, res) => {
     req.logout();
     req.flash("success_msg", "Now logged out");
@@ -84,5 +108,6 @@ const logout = (req, res) => {
 module.exports = {
     register,
     login,
+    update,
     logout
 }
