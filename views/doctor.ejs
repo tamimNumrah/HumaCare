@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Import materialize.css-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <link rel="stylesheet" href="css/main.css">
+     <!-- Script tag for Fontawesome-->
+     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+     <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+     <title>Huma Care</title>
+</head>
+<body class="doctorHome" action="/doctor">
+    <!--Navigation Bar-->
+    <div class="navbar-fixed">
+        <nav class="indigo darken-4 ">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">Huma Care</a>
+                    <a href="#" data-target="mobile-nav" class="sidenav-trigger"> <!-- Used for hamburger icon targetting mobile devices-->
+                        <i class="material-icons">menu</i>
+                      </a>
+                      <ul class="right hide-on-med-and-down"> <!-- hides when the screen size is medium and less than that-->
+                        <li>
+                          <a href="#aboutus">About Us</a>
+                        </li>
+                        <li>
+                          <a href="#contact">Contact</a>
+                        </li>
+                        <li>
+                          <a href="/patients/login" class="btn white indigo-text text-darken-4">For Patients</a>
+                        </li>
+                      </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <ul class="sidenav" id="mobile-nav"> <!-- hides when the screen size is medium and less than that-->
+        <li>
+            <a href="#aboutus">About Us</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
+          <li>
+            <a href="#login" class="btn white indigo-text text-darken-4">For Patients</a>
+          </li>
+    </ul>
+    <!--Registration section-->
+    <section class="register">
+        <div class="container white darken-4 indigo-text text-darken-4">
+            <div class="row">
+                <!-- Register slide-->
+                <div class="col s6">
+                    <h2>Patients are looking for doctors like you</h2><br>
+                    <h6>Millions of patients are looking for the right doctor on HumaCare. Start your digital journey with Huma Care Profile</h6>
+                    <p>Let's take the first step and create your account</p>
+                    <div class="input-field">
+                        <input id="email" type="email" class="validate">
+                        <label for="email" class="indigo-text text-darken-4">Email</label>
+                    </div> 
+                    <div class="btn indigo darken-4 white-text" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </div>
+                    <p>If you already have an account.Please <a href="#"class="">login</a> here</p>
+                </div>
+                <!-- Photo slide-->
+                <div class="col s6">
+                    <img class="materialboxed" width="600" src="assests/doctor-hero.jpg">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Easy update section-->
+    <section class="easyUpdate indigo darken-4">
+        <div class="container white-text">
+            <div class="row">
+                <!--Image Slide-->
+                <div class="col s6">
+                    <img class="materialboxed" width="400" src="assests/mobile-update.jpg">
+                </div>
+                <div class="col s6">
+                    <h2>Edit your profile from anywhere, effortlessly</h2><br>
+                    <ul>
+                        <li>-Easily add or modify your details</li>
+                        <li>-Add information that matters to your patients - timings, fees, new services, and much more</li>
+                        <li>-Keep all your information up to date, with ease</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Footer Section-->
+    <footer class="section white indigo-text text-darken-4 center">
+        <h2 class="brand-logo">Huma Care</h2>
+        <p class="flow-text">Copyright &copy; 2022, Huma Care.All rights reserved</p>
+    </footer>   
+</body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</html>
