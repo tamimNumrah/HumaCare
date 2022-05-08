@@ -19,4 +19,10 @@ router.get("/dashboard", ensureAuthenticated, (req, res) => {
 router.get("/doctor", (req,res)=> {
     res.render("doctor");
 });
+
+//Doctor Login
+router.get("/doctorLogin", (req,res)=> {
+    res.render("doctorLogin");
+});
+
 module.exports = router;
