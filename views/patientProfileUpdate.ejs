@@ -20,14 +20,33 @@
     <form action="/patients/update" method="POST" class="patientProfileUpdate">
         <h1> Update Profile </h1><br>
         <%- include ('./partials/messages') %>
+        <%- include ('../public/js/patientProfileUpdateFunctions.ejs') %>
         <input type="email" name="email" placeholder="Email Address" value="<%= patient.email %>" required /><br>
-        <input type="radio" id="male" name="gender" value="m">
+        <input type="radio" id="male" name="gender" value="m"
+            <%if(patient.gender == 'm'){%>
+                <%="checked"%>
+            <%}%>
+        >
         <label for="male">Male</label><br>
-        <input type="radio" id="female" name="gender" value="f">
+        <input type="radio" id="female" name="gender" value="f"
+            <%if(patient.gender == 'f'){%>
+                <%="checked"%>
+            <%}%>
+        >
         <label for="female">Female</label><br>
-        <input type="radio" id="undefined" name="gender" value="n">
+        <input type="radio" id="undefined" name="gender" value="n"
+            <%if(patient.gender == 'n'){%>
+                <%="checked"%>
+            <%}%>
+        >
         <label for="undefined">Rather not say</label><br>
+        <label>
+            Enter your birthday:
+            <input type="date" name="birthdate" value="<%= patient.birthdate.toISOString().substring(0,10) %>"required>
+          </label><br>
         <button type="sumbit">Update</button>
     </form>
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </html>

@@ -1,0 +1,6 @@
+<%
+parsedDate = function(s) {
+    var b = s.toDateString().split(/\D/);
+    return new Date(b[0], --b[1], b[2]);
+}
+%>

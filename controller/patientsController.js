@@ -76,11 +76,12 @@ const login = (req, res, next) => {
 };
 
 const update = (req, res, next) => {
-    const { gender, email } = req.body; //extract the values
+    const { gender, email, birthdate } = req.body; //extract the values
     Patient.findOne({ email: email }).exec((err, patient) => {
         if (patient) {
             //user already exists
             patient.gender = gender;
+            patient.birthdate = birthdate;
             patient
                 .save()
                 .then( value=> {
