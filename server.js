@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 app.use("/", require("./routes/index"));
 app.use("/patients", require("./routes/patients"));
 app.use("/doctors", require("./routes/doctors"));
-app.use("/receiptionist", require("./routes/receiptionist"));
+app.use("/receptionist", require("./routes/receptionist"));
 app.use("/clinic", require("./routes/clinic"));
 
 

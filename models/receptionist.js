@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const ReceiptionistSchema = new mongoose.Schema({
+const ReceptionistSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -20,6 +20,6 @@ const ReceiptionistSchema = new mongoose.Schema({
         ref: "Clinic"
     },
 });
-const Receiptionist = mongoose.model("Receiptionist", ReceiptionistSchema);
+const Receptionist = mongoose.model("Receptionist", ReceptionistSchema);
 
-module.exports = Receiptionist;
+module.exports = Receptionist;

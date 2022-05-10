@@ -6,17 +6,17 @@ const {ensureAuthenticated} = require("../config/auth.js");
 
 //Receiptionist dashboard
 router.get("/dashboard", (req,res)=> {
-    res.render("receiptionistDashboard");
+    res.render("receptionistDashboard");
 });
 
 //Receiptionist Register
-router.get("/dashboard", (req,res)=> {
-    res.render("receiptionist");
+router.get("/registration", (req,res)=> {
+    res.render("receptionist");
 });
 
 //Receiptionist Login
 router.get("/login", (req,res)=> {
-    res.render("receiptionistLogin");
+    res.render("receptionistLogin");
 });
 
 module.exports = router;
