@@ -38,6 +38,10 @@ app.use((req, res, next) => {
 //Routes
 app.use("/", require("./routes/index"));
 app.use("/patients", require("./routes/patients"));
+app.use("/doctors", require("./routes/doctors"));
+app.use("/receiptionist", require("./routes/receiptionist"));
+app.use("/clinic", require("./routes/clinic"));
+
 
 var port = process.env.port || 3000;
 app.listen(port, () => {
