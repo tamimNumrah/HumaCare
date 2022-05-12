@@ -19,4 +19,10 @@ router.get("/login", (req,res)=> {
     res.render("receptionistLogin");
 });
 
+//Receptionist Create
+router.post("/createReceptionist", (req,res)=> {
+    controller.receptionistController.createReceptionist(req, res);
+});
+
+
 module.exports = router;
