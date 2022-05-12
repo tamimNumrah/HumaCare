@@ -22,6 +22,10 @@ const DoctorSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Clinic"
     },
+    available: {
+        type: [String],
+        default: ["sunday", "monday", "tuesday", "wednesday", "thursday"]
+    }
 });
 const Doctor = mongoose.model("Doctor", DoctorSchema);
 
