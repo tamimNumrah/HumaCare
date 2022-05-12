@@ -9,4 +9,8 @@ router.get("/clinic", (req,res)=> {
     res.render("clinic");
 });
 
+//Create Clinic
+router.post("/createClinic", (req,res)=> {
+    controller.clinicController.createClinic(req, res);
+});
 module.exports = router;
