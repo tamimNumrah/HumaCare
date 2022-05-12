@@ -18,4 +18,9 @@ router.get("/login", (req,res)=> {
     res.render("doctorLogin");
 });
 
+//Doctor Create
+router.post("/createDoctor", (req,res)=> {
+    controller.doctorController.createDoctor(req, res);
+});
+
 module.exports = router;
