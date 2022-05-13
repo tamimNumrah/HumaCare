@@ -41,6 +41,7 @@ app.use("/patients", require("./routes/patients"));
 app.use("/doctors", require("./routes/doctors"));
 app.use("/receptionist", require("./routes/receptionist"));
 app.use("/clinic", require("./routes/clinic"));
+app.use("/admin", require("./routes/admin"));
 
 
 var port = process.env.port || 3000;

@@ -32,7 +32,7 @@ const register = (req,res) => {
             if (admin) {
                 //user exists
                 errors.push({msg:"Username already registered"});
-                res.render('admin',{errors,name,userName,password,confirmPassword})
+                res.render('register',{errors,name,userName,password,confirmPassword})
                 
             } else {
                 const newAdmin = new Admin ({
@@ -60,4 +60,8 @@ const register = (req,res) => {
             }
         })
     }
+}
+
+module.exports = {
+    register
 }

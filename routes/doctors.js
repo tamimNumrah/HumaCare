@@ -23,7 +23,7 @@ router.post("/createDoctor", (req,res)=> {
     controller.doctorController.createDoctor(req, res);
 });
 
-router.get("/adminRegistration", (req,res)=> {
+/*router.get("/adminRegistration", (req,res)=> {
     res.render("adminRegistration");
-});
+});*/
 module.exports = router;
