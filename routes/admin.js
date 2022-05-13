@@ -8,7 +8,5 @@ router.get("/register", (req, res) => {
 });
 router.post("/register", (req, res) => {
     controller.adminController.register(req,res);
-
-
 });
-module.exports =router;
+module.exports = router;

@@ -3,5 +3,6 @@ module.exports={
     doctorController: require('./doctorController'),
     clinicController: require('./clinicController'),
     receptionistController: require('./receptionistController'),
-    appointmentController: require('./appointmentController')
+    appointmentController: require('./appointmentController'),
+    adminController: require('./adminController')
 }
