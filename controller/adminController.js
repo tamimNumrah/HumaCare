@@ -62,8 +62,8 @@ const register = (req,res) => {
     }
 }
 const login = (req, res, next) => {
-    passport.authenticate("local", {
-        successRedirect: "/admin/register",
+    passport.authenticate("admin", {
+        successRedirect: "/adminDashboard",
         failureRedirect: "/admin/login",
         failureFlash: true
     })(req, res, next);

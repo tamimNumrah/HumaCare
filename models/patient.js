@@ -21,7 +21,7 @@ const PatientSchema = new mongoose.Schema({
     },
     gender: {
         type: String
-    }
+    },
 });
 const Patient = mongoose.model("Patient", PatientSchema);
 
