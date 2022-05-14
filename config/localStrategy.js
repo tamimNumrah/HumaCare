@@ -29,7 +29,7 @@ module.exports = function(passport) {
                                     return done(null, patient);
                                 } else {
                                     return done(null, false, {
-                                        message: "pass incorrect"
+                                        message: "Password is not correct"
                                     });
                                 }
                             }
@@ -53,7 +53,7 @@ module.exports = function(passport) {
                         if (!admin) {
                             console.log("not found")
                             return done(null, false, {
-                                message: "that email is not registered"
+                                message: "Email is not registered"
                             });
                         }
                         //match pass
@@ -67,7 +67,7 @@ module.exports = function(passport) {
                                     return done(null, admin);
                                 } else {
                                     return done(null, false, {
-                                        message: "password incorrect"
+                                        message: "Password is not correct"
                                     });
                                 }
                             }

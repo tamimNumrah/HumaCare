@@ -16,6 +16,11 @@ router.get("/update", ensureAuthenticated, (req, res) => {
         patient: req.user
     });
 });
+router.get("/changePassword", ensureAuthenticated, (req, res) => {
+    res.render("patientChangePassword", {
+        patient: req.user
+    });
+});
 
 //Register handle
 router.post("/register", (req, res) => {
@@ -26,6 +31,9 @@ router.post("/login", (req, res, next) => {
 });
 router.post("/update", (req, res, next) => {
     controller.patientsController.update(req, res, next);
+});
+router.post("/changePassword", (req, res, next) => {
+    controller.patientsController.changePassword(req, res, next);
 });
 
 //logout
