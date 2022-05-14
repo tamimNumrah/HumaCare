@@ -52,7 +52,7 @@ module.exports = function(passport) {
 };
 
 //Authentication for admin login
-module.exports = function(passport) {
+/*module.exports = function(passport) {
     passport.use(
         new LocalStrategy( // user localStrategy strategy
             { usernameField: "userName" },
@@ -97,6 +97,6 @@ module.exports = function(passport) {
             done(err, admin);
         });
     });
-};
+};*/
 
 

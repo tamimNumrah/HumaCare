@@ -50,28 +50,32 @@
             <div class="row" style="padding-bottom: 5%;">
                 <!-- Register slide-->
                 <div class="col s6">
+                    <form action="/patients/register" class="card-panel indigo-text text-darken-4" method="POST">
                     <h2>Welcome to Huma Care</h2><br>
                     <h6>Our professional doctors strive to provide the very best care for our patients. Start your digital journey with Huma Care Profile</h6>
+                    <%- include ('./partials/messages') %>
                     <div class="input-field">
-                      <label>User Name</label><br>
-                      <input type="text" id="userName" name="username" value="<%= typeof name != 'undefined' ? name : '' %>"><br>
+                      <label>Name</label><br>
+                      <input type="text" id="name" name="name"><br>
                     </div>
                     <div class="input-field">
                       <label>Email</label><br>
-                      <input type="email" id="userEmail" name="useremail" value="<%= typeof email != 'undefined' ? email : '' %>"><br>
+                      <input type="email" id="userEmail" name="email"><br>
                     </div>
                     <div class="input-field">
                       <label>Password</label><br>
-                      <input type="password" id="userPassword" name="userpassword" value="<%= typeof password != 'undefined' ? password : '' %>"><br>
+                      <input type="password" id="userPassword" name="password"><br>
                     </div>
                     <div class="input-field">
                       <label>Confirm Password</label><br>
-                      <input type="password" id="userPassword2" name="userpassword2" value="<%= typeof password2 != 'undefined' ? password2 : '' %>"><br>
+                      <input type="password" id="userPassword2" name="password2" ><br>
                     </div>
                     <input type="submit" value="Submit" class="btn indigo white-text" id="formSubmit">
                  
                     <p>If you already have an account, please <a href="/patients/login"class="">login</a> here.</p>
+                    </form>
                 </div>
+                
                 <!-- Photo slide-->
                 <div class="col s6" style="padding-top: 150px;">
                     <img class="materialboxed" width="500" src="../assests/patientFile.png">
