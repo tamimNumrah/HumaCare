@@ -48,11 +48,4 @@ const Admin =require("../models/admin");
         Admin.findById(id, function(err, admin) {
             done(err, admin);
         });
-    });
-<<<<<<< HEAD:config/passport.js
-};*/
-
-
-=======
-};
->>>>>>> b190860be54740ff2c10d5c94d435c5cc6fadd90:config/adminLocalStrategy
+    });*/
