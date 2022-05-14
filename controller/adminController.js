@@ -1,5 +1,5 @@
 const Admin = require("../models/admin");
-const passport = require('passport');
+//const passport = require('passport');
 const bcrypt = require("bcrypt");
 
 const register = (req,res) => {
@@ -18,7 +18,7 @@ const register = (req,res) => {
         errors.push({msg:"Passwords should be atleast 6 characters"});
     }
     if (errors.length > 0) {
-        res.render("register", {
+        res.render("adminRegistration", {
             errors: errors,
             name: name,
             userName: userName,
@@ -32,7 +32,7 @@ const register = (req,res) => {
             if (admin) {
                 //user exists
                 errors.push({msg:"Username already registered"});
-                res.render('register',{errors,name,userName,password,confirmPassword})
+                res.render('adminRegistration',{errors,name,userName,password,confirmPassword})
                 
             } else {
                 const newAdmin = new Admin ({
@@ -52,13 +52,13 @@ const register = (req,res) => {
                         req.flash(
                             "success_msg", "You have now registered!"
                         );
-                        res.redirect("/patients/login");
+                        //res.redirect("/");
                     })
                     .catch(value => console.log(value));
                 })
                 );
             }
-        })
+        });
     }
 }
 
