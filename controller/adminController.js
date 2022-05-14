@@ -1,5 +1,5 @@
 const Admin = require("../models/admin");
-//const passport = require('passport');
+const passport = require('passport');
 const bcrypt = require("bcrypt");
 
 const register = (req,res) => {
@@ -61,7 +61,14 @@ const register = (req,res) => {
         });
     }
 }
-
+const login = (req, res, next) => {
+    passport.authenticate("local", {
+        successRedirect: "/admin/register",
+        failureRedirect: "/admin/login",
+        failureFlash: true
+    })(req, res, next);
+};
 module.exports = {
-    register
+    register,
+    login
 }

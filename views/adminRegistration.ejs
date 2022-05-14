@@ -24,7 +24,7 @@
                         </a>
                         <ul class="right hide-on-med-and-down"> <!-- hides when the screen size is medium and less than that-->
                             <li>
-                              <a href="/patients/login" class="btn white indigo-text text-darken-4">LOGIN</a>
+                              <a href="/admin/login" class="btn white indigo-text text-darken-4">LOGIN</a>
                             </li>
                         </ul>
                     </div>
@@ -44,6 +44,7 @@
                     <div class="col s6" >
                             <form action="/admin/register" class="card-panel indigo-text text-darken-4" method="POST">
                                 <h3> Registration Form</h3>
+                                <%- include ('./partials/messages') %>
                                 <div class="input-field">
                                     <label>Name</label><br>
                                         <input type="text" id="name" name="name"><br>
