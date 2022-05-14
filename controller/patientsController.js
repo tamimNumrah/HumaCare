@@ -68,6 +68,7 @@ const register = (req, res) => {
 }
 
 const login = (req, res, next) => {
+    console.log(req.body)
     passport.authenticate("local", {
         successRedirect: "/dashboard",
         failureRedirect: "/patients/login",
