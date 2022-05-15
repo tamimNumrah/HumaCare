@@ -91,14 +91,14 @@
             <div class="row">
                 <div class="col s12 card-panel indigo-text text-darken-4">
                     <form action="/clinic/createClinic" class="login-form" method="post">
-                        <h3>Login</h3>
+                        <h3>Add a clinic</h3>
                         <%- include ('./partials/messages') %>
                         <div class="input-field">
-                            <label>User Name</label><br>
-                                <input type="text" id="userName" name="name"><br>
+                            <label>Clinic Name</label><br>
+                                <input type="text" name="name"><br>
                         </div>
                         <div class="input-field">
-                        <label>Password</label><br>
+                        <label>Location</label><br>
                             <input type="text"   name="location"><br>
                         </div>
                         <input type="submit" value="Submit" class="btn indigo white-text" id="formSubmit">
