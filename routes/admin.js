@@ -17,4 +17,9 @@ router.get("/login",(req,res)=> {
 router.post("/login", (req, res, next) => {
     controller.adminController.login(req, res, next);
 });
+
+//Dashboard
+router.get("/dashboard",(req,res)=> {
+    res.render("adminDashboard");
+});
 module.exports = router;

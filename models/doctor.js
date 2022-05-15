@@ -24,7 +24,7 @@ const DoctorSchema = new mongoose.Schema({
     },
     available: {
         type: [String],
-        default: ["sunday", "monday", "tuesday", "wednesday", "thursday"]
+        default: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday","Saturday"]
     }
 });
 const Doctor = mongoose.model("Doctor", DoctorSchema);
