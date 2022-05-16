@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+  <link rel="stylesheet" href="../css/main.css">
   <!-- Script tag for Fontawesome-->
   <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
     integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
@@ -54,43 +54,34 @@
               name="doctorSearch">
             <input type="submit" value="Search" class="btn indigo white-text" id="searchSubmit">
           </form>
-          <% if(typeof doctors!='undefined' ) { %>
-            <ul>
-              <% for(var i=0; i<doctors.length; i++) { %>
-                <li>
-                  <%= doctors[i].name %>
-                  <%= doctors[i].clinic.name %>
-                </li>
-                <% } %>
-            </ul>
-          <% } %>
         </div>
       </div>
     </div>
   </section>
-  <section id="search_results">
+  <!-- Search Results-->
+  <section>
     <div class="container">
+      
       <div class="row">
+        <% if(typeof doctors!='undefined' ) { %>
+          <% for(var i=0; i<doctors.length; i++) { %>
         <div class="col s12 m3">
-          <div class="card-horizontal">
-            <div class="card-stacked">
-              <div class="card-content">
-                <ul>
-                  <li>Doctor: Doctor A</li>
-                  <li>Specialization: Cardilogist</li>
-                  <li>Clinic: Clinic A</li>
-                  <li>Availability: Monday, Friday, Sunday</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a href="/card-reveal" class="btn white-text indigo darken-4">Book your appointment</a>
-              </div>
-              <div class="card-reveal">
-                <span>Appointment list</span>
-              </div>
+          <div class="card">
+            <div class="card-content indigo-text text-darken-4">
+              <ul>
+                <li><b>Doctor:</b><%= doctors[i].name %></li>
+                <li><b>Specialization:</b> <%= doctors[i].specialization %></li>
+                <li><b>Clinic:</b><%= doctors[i].clinic.name %></li>
+                <li><b>Availability:</b> <%= doctors[i].available %></li>
+              </ul>
+            </div>
+            <div class="card-action">
+              <a href="#" class="btn white-text indigo darken-4">Book Appointment</a>
             </div>
           </div>
-        </div>
+        </div> <% } %>
+        <% } %>
+
       </div>
     </div>
   </section>
