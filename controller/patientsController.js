@@ -177,22 +177,10 @@ const logout = (req, res) => {
 };
 
 
-const search = async (req,res)=> {
-    const {specialization}= req.body;
-    
-
-    
-
-
-
-}
-
 module.exports = {
     register,
     login,
     update,
     changePassword,
-    search,
     logout
-
 };

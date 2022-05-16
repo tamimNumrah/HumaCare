@@ -59,6 +59,20 @@ const createDoctor = async (req, res) => {
     });
 }
 
+const search = async (req, res) => {
+    const { doctorSearch } = req.body;
+    Doctor
+        .find(
+            { $text: { $search: doctorSearch }})
+        .populate('clinic')
+        .exec((err, docs) => {
+            res.render("dashboard", {
+                doctors: docs
+            });
+        });
+}
+
 module.exports = {
-    createDoctor
+    createDoctor,
+    search
 }

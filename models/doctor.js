@@ -27,6 +27,8 @@ const DoctorSchema = new mongoose.Schema({
         default: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday","Saturday"]
     }
 });
+DoctorSchema.index({ name: 'text', specialization: 'text' });
+
 const Doctor = mongoose.model("Doctor", DoctorSchema);
 
 module.exports = Doctor;

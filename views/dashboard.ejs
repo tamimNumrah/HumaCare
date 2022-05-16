@@ -1,79 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <!-- Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    
-    <!-- Script tag for Fontawesome-->
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Huma Care</title>
+  <!-- Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Script tag for Fontawesome-->
+  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+    crossorigin="anonymous"></script>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huma Care</title>
 </head>
+
 <body>
-      <!--Navigation Bar-->
-      <div class="navbar-fixed">
-        <nav class="indigo darken-4">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">Huma Care</a>
-                    <a href="#" data-target="mobile-nav" class="sidenav-trigger"> <!-- Used for hamburger icon targetting mobile devices-->
-                        <i class="material-icons">menu</i>
-                    </a>
-                    <ul class="right hide-on-med-and-down"> <!-- hides when the screen size is medium and less than that-->
-                        <li>
-                          <a href="/admin/logout" class="btn white indigo-text text-darken-4">Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+  <!--Navigation Bar-->
+  <div class="navbar-fixed">
+    <nav class="indigo darken-4">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Huma Care</a>
+          <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+            <!-- Used for hamburger icon targetting mobile devices-->
+            <i class="material-icons">menu</i>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <!-- hides when the screen size is medium and less than that-->
+            <li>
+              <a href="/admin/logout" class="btn white indigo-text text-darken-4">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <ul class="sidenav" id="mobile-nav">
+    <!-- hides when the screen size is medium and less than that-->
+    <li>
+      <a href="/admin/logout" class="btn white indigo-text text-darken-4">Logout</a>
+    </li>
+  </ul>
+  <!--Search bar-->
+  <section id="search" class="section section-search indigo-text darken-4 center">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h3>Search for Doctor</h3>
+          <form action="/patients/search" class="input-field" method="POST">
+            <input type="search" class="white indigo-text autocomplete" id="doctorSearch" placeholder="Specialization"
+              name="doctorSearch">
+            <input type="submit" value="Search" class="btn indigo white-text" id="searchSubmit">
+          </form>
+          <% if(typeof doctors!='undefined' ) { %>
+            <ul>
+              <% for(var i=0; i<doctors.length; i++) { %>
+                <li>
+                  <%= doctors[i].name %>
+                  <%= doctors[i].clinic.name %>
+                </li>
+                <% } %>
+            </ul>
+          <% } %>
+        </div>
+      </div>
     </div>
-    <ul class="sidenav" id="mobile-nav"> <!-- hides when the screen size is medium and less than that-->
-        <li>
-          <a href="/admin/logout" class="btn white indigo-text text-darken-4">Logout</a>
-        </li>
-    </ul>
-    <!--Search bar-->
-    <section id="search" class="section section-search indigo-text darken-4 center">
-        <div class="container">
-          <div class="row">
-            <div class="col s12">
-              <h3>Search for Doctor</h3>
-              <div class="input-field" method="get">
-                <input type="text" class="white indigo-text autocomplete" id="autocomplete-input" placeholder="Specialization" name="specialization">
-                <a href="/patients/search" class="btn white-text indigo darken-4">Search</a>
+  </section>
+  <section id="search_results">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m3">
+          <div class="card-horizontal">
+            <div class="card-stacked">
+              <div class="card-content">
+                <ul>
+                  <li>Doctor: Doctor A</li>
+                  <li>Specialization: Cardilogist</li>
+                  <li>Clinic: Clinic A</li>
+                  <li>Availability: Monday, Friday, Sunday</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a href="/card-reveal" class="btn white-text indigo darken-4">Book your appointment</a>
+              </div>
+              <div class="card-reveal">
+                <span>Appointment list</span>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      <section id="search_results">
-        <div class="container">
-        <div class="row">
-        <div class="col s12 m3">
-            <div class="card-horizontal">
-              <div class="card-stacked">
-                <div class="card-content">
-                  <ul>
-                      <li>Doctor: Doctor A</li>
-                      <li>Specialization: Cardilogist</li>
-                      <li>Clinic: Clinic A</li>
-                      <li>Availability: Monday, Friday, Sunday</li>
-                  </ul>
-                </div>
-                <div class="card-action">
-                  <a href="/card-reveal" class="btn white-text indigo darken-4">Book your appointment</a>
-                </div>
-                <div class="card-reveal">
-                    <span>Appointment list</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-          </div>
-      </section>
+      </div>
+    </div>
+  </section>
 </body>
