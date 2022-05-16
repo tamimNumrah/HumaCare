@@ -36,6 +36,12 @@ router.post("/changePassword", (req, res, next) => {
     controller.patientsController.changePassword(req, res, next);
 });
 
+//Search for Doctors
+router.get("/search",(req,res)=>{
+    controller.patientsController.search(req,res);
+})
+
+
 //logout
 router.get("/logout", (req, res) => {
     controller.patientsController.logout(req, res);

@@ -1,4 +1,5 @@
 const Patient = require("../models/patient");
+const Doctor = require("../models/doctor");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 
@@ -175,10 +176,23 @@ const logout = (req, res) => {
     res.redirect("/patients/login");
 };
 
+
+const search = async (req,res)=> {
+    const {specialization}= req.body;
+    
+
+    
+
+
+
+}
+
 module.exports = {
     register,
     login,
     update,
     changePassword,
+    search,
     logout
+
 };
