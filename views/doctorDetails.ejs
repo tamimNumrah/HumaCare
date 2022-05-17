@@ -1,0 +1,10 @@
+
+<p>Searching for appointments for doctor "<%=doctor.name%>"</p>
+
+<form action="/patients/retrieveAppointments">
+    <label for="Appointment">Select a preferred date:</label>
+    <input type="hidden"  id="doctor" value= "<%=doctor%>"" name="doctor">
+    <input type="date" id="appointment" name="appointment">
+    <input type="submit">
+</form>
+

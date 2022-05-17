@@ -50,7 +50,7 @@
         <div class="col s12">
           <h3>Search for Doctor</h3>
           <form action="/patients/search" class="input-field" method="POST">
-            <input type="search" class="white indigo-text autocomplete" id="doctorSearch" placeholder="Specialization"
+            <input type="search" class="white indigo-text autocomplete" id="doctorSearch" placeholder="Specialization or Doctor Name"
               name="doctorSearch">
             <input type="submit" value="Search" class="btn indigo white-text" id="searchSubmit">
           </form>
@@ -76,7 +76,10 @@
               </ul>
             </div>
             <div class="card-action">
-              <a href="#" class="btn white-text indigo darken-4">Book Appointment</a>
+              <form action="/patients/details" class="input-field" method="POST">
+                <input type="hidden"  id="doctor" value= "<%=doctors[i]%>"" name="doctor">
+                <input type="submit" value="Book Appointment" class="btn indigo white-text" id="searchSubmit">
+              </form>
             </div>
           </div>
         </div> <% } %>

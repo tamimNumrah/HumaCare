@@ -45,4 +45,16 @@ router.post("/search",(req, res, next)=>{ //search for doctor in doctors control
 router.get("/logout", (req, res) => {
     controller.patientsController.logout(req, res);
 });
+//Open doctor details
+router.post("/details", ensureAuthenticated, (req, res, next) => {
+    res.render("doctorDetails", {
+        patient: req.user,
+        doctor: req.body.doctor
+    });
+});
+
+router.get("/retrieveAppointments", (req, res) => {
+    controller.appointmentController.retrieveAppointments(req, res);
+});
+
 module.exports = router;
