@@ -1,21 +1,45 @@
 const Appointment = require("../models/appointment");
+const Doctor = require("../models/doctor");
 const url = require('url');    
 
 const retrieveAppointments = (req, res) => { //retrieve appointments for a doctor
-    const { appointment, doctor } = req.query; //extract the values
+    const { appointment, doctorId } = req.query; //extract the values
     let newAppointment = new Date(appointment);
     let end = new Date(newAppointment.getFullYear(),newAppointment.getMonth(),newAppointment.getDate()+1,0,59,59);
     let query = {appointmentDate: {$gte: newAppointment, $lt: end} };
-    console.log(doctor)
-    Appointment
-        .find({ $and: [query, {$doctor: doctor._id}]})
+    Doctor.findOne({ _id: doctorId }).populate('clinic').exec((err, doctor) => {
+        Appointment
+        .find({ $and: [query, {$doctor: doctorId}]})
         .populate('clinic')
         .exec((err, appointments) => {
-            console.log(appointments)
+            req.session.appointment = appointment;
             req.session.doctor = doctor;
+            req.session.clinic = doctor.clinic;
             req.session.appointments = appointments;
             res.redirect("details");       
         });
+    });
+};
+
+const bookAppointment = (req, res) => {
+    const { slot, doctorId, date, clinicId, patientId} = req.body; //extract the values
+    const appointment = new Appointment({
+        slot: slot,
+        doctor: doctorId,
+        appointmentDate: date,
+        clinic: clinicId,
+        patient: patientId
+    });
+    appointment
+    .save()
+    .then(value => {
+        req.flash(
+            "success_msg",
+            "You have now booked your appointment!"
+        ); // show success flsash message
+        res.redirect("/dashboard");
+    })
+    .catch(value => console.log(value));
 };
 
 const patientAppointments = (req, res) => {
@@ -25,7 +49,6 @@ const patientAppointments = (req, res) => {
         .find({ $and: [query, {$patient: req.user._id}]})
         .populate('doctor')
         .exec((err, appointments) => {
-            console.log(appointments)
             res.render("patientAppointments", {
                 patient: req.user,
                 appointments: appointments
@@ -89,6 +112,7 @@ const getSlotText = slot => {
 
 module.exports = {
     retrieveAppointments,
+    bookAppointment,
     patientAppointments,
     getSlotText
 };

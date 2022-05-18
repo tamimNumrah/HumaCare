@@ -24,7 +24,9 @@ router.get("/changePassword", ensureAuthenticated, (req, res) => {
 router.get("/details", (req, res) => {
     res.render("doctorDetails", {
         patient: req.user,
+        appointment: req.session.appointment,
         doctor: req.session.doctor,
+        clinic: req.session.clinic,
         appointments: req.session.appointments
     });
 });
@@ -62,6 +64,10 @@ router.post("/details", ensureAuthenticated, (req, res, next) => {
 
 router.get("/retrieveAppointments", (req, res) => {
     controller.appointmentController.retrieveAppointments(req, res);
+});
+
+router.post("/bookAppointment", (req, res, next) => {
+    controller.appointmentController.bookAppointment(req, res, next);
 });
 
 module.exports = router;

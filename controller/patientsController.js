@@ -175,6 +175,7 @@ const details = (req, res, next) => {
     Doctor.findOne({ _id: doctorId }).exec((err, doctor) => {
         res.render("doctorDetails", {
             patient: req.user,
+            appointment: new Date(),
             doctor: doctor
         });
     });

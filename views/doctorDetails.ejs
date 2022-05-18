@@ -2,8 +2,8 @@
 
 <form action="/patients/retrieveAppointments">
     <label for="Appointment">Select a preferred date:</label>
-    <input type="hidden" id="doctor" value="<%=doctor%>"" name="doctor">
-    <input type="date" id="appointment" name="appointment">
+    <input type="hidden" id="doctorId" value="<%=doctor._id%>"" name="doctorId">
+    <input type="date" id="appointment" name="appointment" value="<%= appointment %>">
     <input type="submit">
 </form>
 <%- include ('../public/js/appointmentFunctions.ejs') %>
@@ -23,7 +23,14 @@
                             <% } %>
                         <% } %>
                         <% if (booked == false) { %>
-                            <b>Book now</b>
+                            <form action="/patients/bookAppointment" method="POST">
+                                <input type="hidden" id="slot" value="<%=i%>"" name="slot">
+                                <input type="hidden" id="doctorId" value="<%=doctor._id%>"" name="doctorId">
+                                <input type="hidden" id="date" value="<%= appointment %>" name="date">
+                                <input type="hidden" id="clinicId" value="<%=clinic._id%>"" name="clinicId">
+                                <input type="hidden" id="patientId" value="<%=patient._id%>"" name="patientId">
+                                <input type="submit" value="Book now">
+                            </form>
                         <% } %>
                     <% } %>
                 </li>
