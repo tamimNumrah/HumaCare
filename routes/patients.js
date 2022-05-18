@@ -28,6 +28,9 @@ router.get("/details", (req, res) => {
         appointments: req.session.appointments
     });
 });
+router.get("/appointments", (req, res) => {
+    controller.appointmentController.patientAppointments(req, res);
+});
 
 //Register handle
 router.post("/register", (req, res) => {

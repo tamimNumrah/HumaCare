@@ -1,0 +1,22 @@
+<%- include ('../public/js/appointmentFunctions.ejs') %>
+
+<% if(typeof appointments!='undefined' ) { %>
+    <% for(var i=0; i<appointments.length; i++) { %>
+        <ul>
+            <li><b>Doctor:</b>
+                <%= appointments[i].doctor.name %>
+            </li>
+            <li><b>Specialization:</b>
+                <%= appointments[i].doctor.specialization %>
+            </li>
+            <li><b>Slot:</b>
+                <%= parsedSlot(appointments[i].slot) %>
+            </li>
+            <li><b>Date:</b>
+                <%= appointments[i].appointmentDate %>
+            </li>
+        </br>
+        </br>
+        </ul>
+    <% } %>
+<% } %>

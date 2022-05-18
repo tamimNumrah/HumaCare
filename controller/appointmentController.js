@@ -18,6 +18,21 @@ const retrieveAppointments = (req, res) => { //retrieve appointments for a docto
         });
 };
 
+const patientAppointments = (req, res) => {
+    let start = new Date();
+    let query = {appointmentDate: {$gte: start} };
+    Appointment
+        .find({ $and: [query, {$patient: req.user._id}]})
+        .populate('doctor')
+        .exec((err, appointments) => {
+            console.log(appointments)
+            res.render("patientAppointments", {
+                patient: req.user,
+                appointments: appointments
+            });    
+        });
+};
+
 const getSlotText = slot => {
     let slotText;
     switch (slot) {
@@ -74,5 +89,6 @@ const getSlotText = slot => {
 
 module.exports = {
     retrieveAppointments,
+    patientAppointments,
     getSlotText
 };
