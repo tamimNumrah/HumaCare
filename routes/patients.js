@@ -21,6 +21,13 @@ router.get("/changePassword", ensureAuthenticated, (req, res) => {
         patient: req.user
     });
 });
+router.get("/details", (req, res) => {
+    res.render("doctorDetails", {
+        patient: req.user,
+        doctor: req.session.doctor,
+        appointments: req.session.appointments
+    });
+});
 
 //Register handle
 router.post("/register", (req, res) => {
@@ -47,10 +54,7 @@ router.get("/logout", (req, res) => {
 });
 //Open doctor details
 router.post("/details", ensureAuthenticated, (req, res, next) => {
-    res.render("doctorDetails", {
-        patient: req.user,
-        doctor: req.body.doctor
-    });
+    controller.patientsController.details(req, res, next);
 });
 
 router.get("/retrieveAppointments", (req, res) => {

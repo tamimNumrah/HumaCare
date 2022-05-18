@@ -1,10 +1,34 @@
-
-<p>Searching for appointments for doctor "<%=doctor.name%>"</p>
+<p>Searching for appointments for doctor </p><p><%= doctor["name"] %></p>
 
 <form action="/patients/retrieveAppointments">
     <label for="Appointment">Select a preferred date:</label>
-    <input type="hidden"  id="doctor" value= "<%=doctor%>"" name="doctor">
+    <input type="hidden" id="doctor" value="<%=doctor%>"" name="doctor">
     <input type="date" id="appointment" name="appointment">
     <input type="submit">
 </form>
-
+<%- include ('../public/js/appointmentFunctions.ejs') %>
+<section>
+    <div class="container">
+        <div class="row">
+            <ul>
+            <% for(var i=1; i<=16; i++) { %>
+                <li><b>Time Slot:</b>
+                    <%= parsedSlot(i) %>
+                    <% if(typeof appointments!='undefined' ) { %>
+                        <% let booked = false %>
+                        <% for(var count=0; count<appointments.length; count++) { %>
+                            <% if(appointments[count].slot == i ) { %>
+                                <% booked = true %>
+                                <b>Booked</b>
+                            <% } %>
+                        <% } %>
+                        <% if (booked == false) { %>
+                            <b>Book now</b>
+                        <% } %>
+                    <% } %>
+                </li>
+            <% } %>
+            </ul>
+        </div>
+    </div>
+</section>

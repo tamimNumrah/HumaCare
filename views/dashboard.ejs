@@ -77,7 +77,7 @@
             </div>
             <div class="card-action">
               <form action="/patients/details" class="input-field" method="POST">
-                <input type="hidden"  id="doctor" value= "<%=doctors[i]%>"" name="doctor">
+                <input type="hidden"  id="doctorId" value= "<%=doctors[i]._id%>"" name="doctorId">
                 <input type="submit" value="Book Appointment" class="btn indigo white-text" id="searchSubmit">
               </form>
             </div>

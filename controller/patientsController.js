@@ -170,6 +170,17 @@ const changePassword = (req, res, next) => {
     }
 };
 
+const details = (req, res, next) => {
+    const { doctorId } = req.body;
+    Doctor.findOne({ _id: doctorId }).exec((err, doctor) => {
+        res.render("doctorDetails", {
+            patient: req.user,
+            doctor: doctor
+        });
+    });
+    
+};
+
 const logout = (req, res) => {
     req.logout();
     req.flash("success_msg", "Now logged out");
@@ -182,5 +193,6 @@ module.exports = {
     login,
     update,
     changePassword,
+    details,
     logout
 };

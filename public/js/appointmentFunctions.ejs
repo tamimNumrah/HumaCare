@@ -1,24 +1,5 @@
-const Appointment = require("../models/appointment");
-const url = require('url');    
-
-const retrieveAppointments = (req, res) => { //retrieve appointments for a doctor
-    const { appointment, doctor } = req.query; //extract the values
-    let newAppointment = new Date(appointment);
-    let end = new Date(newAppointment.getFullYear(),newAppointment.getMonth(),newAppointment.getDate()+1,0,59,59);
-    let query = {appointmentDate: {$gte: newAppointment, $lt: end} };
-    console.log(doctor)
-    Appointment
-        .find({ $and: [query, {$doctor: doctor._id}]})
-        .populate('clinic')
-        .exec((err, appointments) => {
-            console.log(appointments)
-            req.session.doctor = doctor;
-            req.session.appointments = appointments;
-            res.redirect("details");       
-        });
-};
-
-const getSlotText = slot => {
+<%
+parsedSlot = function(slot) {
     let slotText;
     switch (slot) {
         case 1:
@@ -70,9 +51,5 @@ const getSlotText = slot => {
             slotText = "04:31 PM - 05:00 PM";
     }
     return slotText;
-};
-
-module.exports = {
-    retrieveAppointments,
-    getSlotText
-};
+}
+%>
