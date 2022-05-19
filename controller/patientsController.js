@@ -4,11 +4,11 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 
 const register = (req, res) => {
-    const { name, email, password, password2 } = req.body; //extract the values
+    const { name, email, password, password2, gender, birthdate } = req.body; //extract the values
 
     let errors = [];
-    console.log(" Name " + name + " email :" + email + " pass:" + password);
-    if (!name || !email || !password || !password2) {
+    console.log(" Name " + name + " email :" + email + " pass:" + password + "gender" + gender +"dateofbirth" +birthdate);
+    if (!name || !email || !password || !password2 || !gender || !birthdate) {
         errors.push({ msg: "Please fill in all fields" }); //show error for empty fields
     }
     //check if match
@@ -26,7 +26,9 @@ const register = (req, res) => {
             name: name,
             email: email,
             password: password,
-            password2: password2
+            password2: password2,
+            birthdate: birthdate,
+            gender: gender,
         });
     } else {
         //validation passed
@@ -40,13 +42,17 @@ const register = (req, res) => {
                     name,
                     email,
                     password,
-                    password2
+                    password2,
+                    gender,
+                    birthdate
                 });
             } else {
                 const newPatient = new Patient({
                     name: name,
                     email: email,
-                    password: password
+                    password: password,
+                    gender: gender,
+                    birthdate: birthdate
                 });
                 //hash password
                 bcrypt.genSalt(10, (err, salt) =>
