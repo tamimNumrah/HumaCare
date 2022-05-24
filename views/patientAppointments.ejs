@@ -1,5 +1,5 @@
 <%- include ('../public/js/appointmentFunctions.ejs') %>
-
+<%- include ('./partials/messages') %>
 <% if(typeof appointments!='undefined' ) { %>
     <% for(var i=0; i<appointments.length; i++) { %>
         <ul>
@@ -14,6 +14,12 @@
             </li>
             <li><b>Date:</b>
                 <%= appointments[i].appointmentDate %>
+            </li>
+            <li>
+            <form action="/patients/cancelAppointment" class="input-field" method="POST">
+                <input type="hidden"  id="appointmentId" value= "<%=appointments[i]._id%>"" name="appointmentId">
+                <input type="submit" value="Cancel Appointment" class="btn indigo white-text" id="cancelSubmit">
+            </form>
             </li>
         </br>
         </br>

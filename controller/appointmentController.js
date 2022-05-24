@@ -43,6 +43,20 @@ const bookAppointment = (req, res) => {
     .catch(value => console.log(value));
 };
 
+const cancelAppointment = (req, res) => {
+    const { appointmentId } = req.body; //extract the values
+    Appointment.findByIdAndDelete(appointmentId)
+    .then(value => {
+        req.flash(
+            "success_msg",
+            "You have now removed your appointment!"
+        ); // show success flsash message
+        res.redirect("/dashboard");
+    })
+    .catch(value => console.log(value));
+};
+
+
 const patientAppointments = (req, res) => {
     let start = new Date();
     const patientId = req.user._id
@@ -115,6 +129,7 @@ const getSlotText = slot => {
 module.exports = {
     retrieveAppointments,
     bookAppointment,
+    cancelAppointment,
     patientAppointments,
     getSlotText
 };

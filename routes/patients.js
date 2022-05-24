@@ -70,4 +70,8 @@ router.post("/bookAppointment", (req, res, next) => {
     controller.appointmentController.bookAppointment(req, res, next);
 });
 
+router.post("/cancelAppointment", (req, res, next) => {
+    controller.appointmentController.cancelAppointment(req, res, next);
+});
+
 module.exports = router;
