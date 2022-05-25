@@ -4,8 +4,10 @@ const controller = require('../controller');
 const {ensureAuthenticated} = require("../config/auth.js");
 
 //Doctors dashboard
-router.get("/dashboard", (req,res)=> {
-    res.render("doctorDashboard");
+router.get("/doctorDashboard", (req,res)=> {
+    res.render("doctorDashboard", {
+        doctor: req.user
+    });
 });
 
 //Doctors registration
@@ -16,6 +18,10 @@ router.get("/registration", (req,res)=> {
 //Doctor Login
 router.get("/login", (req,res)=> {
     res.render("doctorLogin");
+});
+
+router.post("/login", (req, res, next) => {
+    controller.doctorController.login(req, res, next);
 });
 
 //Doctor Create

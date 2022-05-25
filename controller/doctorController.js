@@ -1,5 +1,6 @@
 const Doctor = require("../models/doctor");
 const Clinic = require("../models/clinic");
+const passport = require("passport");
 const bcrypt = require("bcrypt");
 
 const createDoctor = async (req, res) => {
@@ -58,7 +59,13 @@ const createDoctor = async (req, res) => {
         }
     });
 }
-
+const login = (req, res, next) => {
+    passport.authenticate("doctor", {
+        successRedirect: "/doctors/doctorDashboard",
+        failureRedirect: "/doctors/login",
+        failureFlash: true
+    })(req, res, next);
+};
 const search = async (req, res) => {
     const { doctorSearch } = req.body;
     Doctor
@@ -74,5 +81,6 @@ const search = async (req, res) => {
 
 module.exports = {
     createDoctor,
+    login,
     search
 }

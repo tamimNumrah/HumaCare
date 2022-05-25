@@ -3,6 +3,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const Patient = require("../models/patient");
 const Admin = require("../models/admin");
+const Doctor = require("../models/doctor");
 
 module.exports = function(passport) {
     passport.use(
@@ -80,6 +81,43 @@ module.exports = function(passport) {
         )
     );
 
+    passport.use(
+        'doctor',
+        new LocalStrategy( // user localStrategy strategy
+            { usernameField: "email" },
+            (email, password, done) => {
+                //match Doctor
+                Doctor.findOne({ email: email })
+                    .then(doctor => {
+                        if (!doctor) {
+                            return done(null, false, {
+                                message: "that email is not registered"
+                            });
+                        }
+                        //match pass
+                        bcrypt.compare(
+                            password,
+                            doctor.password,
+                            (err, isMatch) => {
+                                if (err) throw err;
+
+                                if (isMatch) {
+                                    return done(null, doctor);
+                                } else {
+                                    return done(null, false, {
+                                        message: "Password is not correct"
+                                    });
+                                }
+                            }
+                        );
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            }
+        )
+    );
+
     passport.serializeUser(function(user, done) {
         if (user.constructor.modelName == "Patient") {
             var key = {
@@ -93,6 +131,12 @@ module.exports = function(passport) {
                 type: "Admin"
             }
             done(null, key);
+        } else if (user.constructor.modelName == "Doctor") {
+            var key = {
+                id: user.id,
+                type: "Doctor"
+            }
+            done(null, key);
         }
     });
 
@@ -104,6 +148,10 @@ module.exports = function(passport) {
         } else if (key.type == "Admin") {
             Admin.findById(key.id, function(err, admin) {
                 done(err, admin);
+            });
+        } else if (key.type == "Doctor") {
+            Doctor.findById(key.id, function(err, doctor) {
+                done(err, doctor);
             });
         }
     });

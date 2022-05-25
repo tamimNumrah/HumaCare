@@ -58,14 +58,15 @@
                 </div>
                 <div class="col s6" >
                     <div class="doctorLogin"style="padding-top: 50px;">
-                        <form action="/" class="card-panel indigo-text text-darken-4" method="POST">
+                        <%- include ('./partials/messages') %>
+                        <form action="login" class="card-panel indigo-text text-darken-4" method="POST">
                             <div class="input-field">
                                 <label>User Name</label><br>
-                                <input type="text" id="userName" name="username"><br>
+                                <input type="email" id="email" name="email"><br>
                             </div>
                             <div class="input-field">
                                 <label>Password</label><br>
-                                <input type="text"  id="password" name="password"><br>
+                                <input type="password"  id="password" name="password"><br>
                             </div>
                             <input type="submit" value="Submit" class="btn indigo white-text" id="formSubmit">
                             <p>If you don't have an account.Please <a href="/doctors/registration"class="">register</a> here</p>
