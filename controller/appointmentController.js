@@ -74,6 +74,22 @@ const patientAppointments = (req, res) => {
     });
 };
 
+const doctorAppointments = (req, res) => {
+    let start = new Date();
+    const doctorId = req.user._id
+    let query = {appointmentDate: {$gte: start} };
+    Appointment
+        .find({ $and: [query, {doctor: doctorId}]})
+        .populate('patient')
+        .populate('clinic')
+        .exec((err, appointments) => {
+            res.render("doctorAppointments", {
+                doctor: req.user,
+                appointments: appointments
+        });    
+    });
+};
+
 const getSlotText = slot => {
     let slotText;
     switch (slot) {
@@ -133,5 +149,6 @@ module.exports = {
     bookAppointment,
     cancelAppointment,
     patientAppointments,
+    doctorAppointments,
     getSlotText
 };

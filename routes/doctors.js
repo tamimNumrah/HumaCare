@@ -29,7 +29,9 @@ router.post("/createDoctor", (req,res)=> {
     controller.doctorController.createDoctor(req, res);
 });
 
-/*router.get("/adminRegistration", (req,res)=> {
-    res.render("adminRegistration");
-});*/
+router.get("/appointments", (req, res) => {
+    controller.appointmentController.doctorAppointments(req, res);
+});
+
+
 module.exports = router;
