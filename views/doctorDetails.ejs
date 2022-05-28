@@ -1,4 +1,70 @@
-<p>Searching for appointments for doctor </p><p><%= doctor["name"] %></p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <!-- Script tag for Fontawesome-->
+  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+    crossorigin="anonymous"></script>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huma Care</title>
+</head>
+<body>
+    <!--Navigation Bar-->
+    <div class="navbar-fixed">
+      <nav class="indigo darken-4">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Huma Care</a>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+              <!-- Used for hamburger icon targetting mobile devices-->
+              <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+              <!-- hides when the screen size is medium and less than that-->
+              <li>
+                <a href="/patients/logout" class="btn white indigo-text text-darken-4">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <ul class="sidenav" id="mobile-nav">
+      <!-- hides when the screen size is medium and less than that-->
+      <li>
+        <a href="/patients/logout" class="btn white indigo-text text-darken-4">Logout</a>
+      </li>
+    </ul>
+<!-- Search for preffered doctor schedule for  appointment booking-->
+<section>
+    <div class="container indigo-text darken-4">
+        <div class="row">
+            <form action="/patients/retrieveAppointments" class="card-panel indigo-text text-darken-4">
+                <div class="input-field">
+                    <label>Preferred doctor</label><br>
+                    <input type="text" value="<%= doctor["name"] %>""><br>
+                </div>
+                <input type="hidden" id="doctorId" value="<%=doctor._id%>" name="doctorId">
+                <div class="input-field">
+                    <label for="">Select preferred date:</label><br>
+                    <input type="date" id="appointment" value="<%= appointment %>">
+                </div>
+                <input type="submit" value="Submit" class="btn indigo white-text">
+            </form>
+            <%- include ('../public/js/appointmentFunctions.ejs') %> 
+        </div>
+
+    </div>
+</section>
+
+<!--<p>Searching for appointments for doctor </p><p><%= doctor["name"] %></p> -->
 
 <form action="/patients/retrieveAppointments">
     <label for="Appointment">Select a preferred date:</label>
@@ -6,7 +72,7 @@
     <input type="date" id="appointment" name="appointment" value="<%= appointment %>">
     <input type="submit">
 </form>
-<%- include ('../public/js/appointmentFunctions.ejs') %>
+<%- include ('../public/js/appointmentFunctions.ejs') %> -->
 <section>
     <div class="container">
         <div class="row">
@@ -39,3 +105,4 @@
         </div>
     </div>
 </section>
+</body>
