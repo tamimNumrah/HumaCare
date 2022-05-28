@@ -66,8 +66,9 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col s4 m4">
-                <% for(var i=1;i<=16; i++) { %>
+            <% for(var i=1;i<=16; i++) { %>
+            <div class="col s12 m3">
+                
                 <div class="card-panel indigo">
                     <span class="white-text">
                         <%= parsedSlot(i) %>
@@ -79,7 +80,7 @@
                         <% for(var count=0; count<appointments.length; count++) { %>
                             <% if(appointments[count].slot == i ) { %>
                                 <% booked = true %>
-                                <p class="btn indigo-text white disabled"> Not available</p>
+                                <b class="btn indigo-text white disabled"> Not available</b>
                             <% } %>
                         <% } %>
                         <% if (booked == false) { %>
@@ -93,9 +94,10 @@
                             </form>
                         <% } %>
                     <% } %>
-                    <% } %>
+                    
                 
             </div>
+            <% } %>
 
         </div>
     </div>
