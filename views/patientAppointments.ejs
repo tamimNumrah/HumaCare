@@ -1,3 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <!-- Script tag for Fontawesome-->
+  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+    crossorigin="anonymous"></script>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huma Care</title>
+</head>
+<body>
+    <!--Navigation Bar-->
+    <div class="navbar-fixed">
+      <nav class="indigo darken-4">
+        <div class="container">
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Huma Care</a>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+              <!-- Used for hamburger icon targetting mobile devices-->
+              <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+              <!-- hides when the screen size is medium and less than that-->
+              <li>
+                <a href="/patients/logout" class="btn white indigo-text text-darken-4">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <ul class="sidenav" id="mobile-nav">
+      <!-- hides when the screen size is medium and less than that-->
+      <li>
+        <a href="/patients/logout" class="btn white indigo-text text-darken-4">Logout</a>
+      </li>
+    </ul>
+    
+    <!-- Section to view appointments list-->
+    <%- include ('../public/js/appointmentFunctions.ejs') %>
+    <%- include ('./partials/messages') %>
+    <section>
+        <div class="container">
+            <div class="row">
+                <table class="white responsive-table centered">
+                    <thead>
+                        <thead class="indigo-text">
+                            <th>Doctor</th>
+                            <th>Specialization</th>
+                            <th>Slot</th>
+                            <th>Date</th>
+                            <th>Clinic</th>
+                            
+                            
+                            <th></th>
+                        </thead>
+                    </thead>
+                    <% if(typeof appointments!='undefined' ) { %>
+                    <% for(var i=0; i<appointments.length; i++) { %>
+                    <tbody>
+                        <tr>
+                            <td><%= appointments[i].doctor.name %></td>
+                            <td><%= appointments[i].doctor.specialization %></td>
+                            <td><%= parsedSlot(appointments[i].slot) %></td>
+                            <td><%= appointments[i].appointmentDate %></td>
+                            <td><%= appointments[i].clinic.name %></td>
+                            <td><form action="/patients/cancelAppointment" class="input-field" method="POST">
+                                <input type="hidden"  id="appointmentId" value= "<%=appointments[i]._id%>"" name="appointmentId">
+                                <input type="submit" value="Cancel Appointment" class="btn red darken-4 white-text" id="cancelSubmit"></form></td>
+                        </tr>
+                    </tbody>
+                    <% } %>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+    </section>
+    <!--
+
 <%- include ('../public/js/appointmentFunctions.ejs') %>
 <%- include ('./partials/messages') %>
 <% if(typeof appointments!='undefined' ) { %>
@@ -26,3 +112,6 @@
         </ul>
     <% } %>
 <% } %>
+    -->
+
+</body>

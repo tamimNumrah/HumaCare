@@ -64,7 +64,9 @@ const patientAppointments = (req, res) => {
     Appointment
         .find({ $and: [query, {patient: patientId}]})
         .populate('doctor')
+        .populate('clinic')
         .exec((err, appointments) => {
+            console.log(appointments);
             res.render("patientAppointments", {
                 patient: req.user,
                 appointments: appointments
