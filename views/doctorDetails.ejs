@@ -54,7 +54,7 @@
                 <input type="hidden" id="doctorId" value="<%=doctor._id%>" name="doctorId">
                 <div class="input-field">
                     <label for="">Select preferred date:</label><br>
-                    <input type="date" id="appointment" value="<%= appointment %>">
+                    <input type="date" id="appointment" value="<%= appointment %>"name="appointment">
                 </div>
                 <input type="submit" value="Submit" class="btn indigo white-text">
             </form>
@@ -64,7 +64,7 @@
     </div>
 </section>
 
-<!--<p>Searching for appointments for doctor </p><p><%= doctor["name"] %></p> -->
+<!--<p>Searching for appointments for doctor </p><p><%= doctor["name"] %></p> 
 
 <form action="/patients/retrieveAppointments">
     <label for="Appointment">Select a preferred date:</label>
