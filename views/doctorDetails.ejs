@@ -63,6 +63,43 @@
 
     </div>
 </section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col s4 m4">
+                <% for(var i=1;i<=16; i++) { %>
+                <div class="card-panel indigo darken-4">
+                    <span class="white-text">
+                        <%= parsedSlot(i) %>
+                    </span>
+                </div>
+                
+                    <% if(typeof appointments!='undefined' ) { %>
+                        <% let booked = false %>
+                        <% for(var count=0; count<appointments.length; count++) { %>
+                            <% if(appointments[count].slot == i ) { %>
+                                <% booked = true %>
+                                <p class="btn indigo-text white disabled"> Not available</p>
+                            <% } %>
+                        <% } %>
+                        <% if (booked == false) { %>
+                            <form action="/patients/bookAppointment" method="POST">
+                                <input type="hidden" id="slot" value="<%=i%>"" name="slot">
+                                <input type="hidden" id="doctorId" value="<%=doctor._id%>"" name="doctorId">
+                                <input type="hidden" id="date" value="<%= appointment %>" name="date">
+                                <input type="hidden" id="clinicId" value="<%=clinic._id%>"" name="clinicId">
+                                <input type="hidden" id="patientId" value="<%=patient._id%>"" name="patientId">
+                                <input type="submit" value="Book Now" class="btn indigo-text white">
+                            </form>
+                        <% } %>
+                    <% } %>
+                    <% } %>
+                
+            </div>
+
+        </div>
+    </div>
+</section>
 
 <!--<p>Searching for appointments for doctor </p><p><%= doctor["name"] %></p> 
 
@@ -73,6 +110,7 @@
     <input type="submit">
 </form>
 <%- include ('../public/js/appointmentFunctions.ejs') %> -->
+<!--
 <section>
     <div class="container">
         <div class="row">
@@ -104,5 +142,5 @@
             </ul>
         </div>
     </div>
-</section>
+</section> -->
 </body>
