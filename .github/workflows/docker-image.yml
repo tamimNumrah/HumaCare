@@ -35,8 +35,7 @@ jobs:
       # build and test the apps     
       - name: build
         run: |
-          npm run build
-          npm run test
+          npm start
 
   push_to_Docker_Hub:
       # The type of runner that the job will run on
