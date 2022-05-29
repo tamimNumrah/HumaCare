@@ -66,6 +66,11 @@ const login = (req, res, next) => {
         failureFlash: true
     })(req, res, next);
 };
+const logout = (req, res) => {
+    req.logout();
+    req.flash("success_msg", "Now logged out");
+    res.redirect("/doctors/login");
+};
 const search = async (req, res) => {
     const { doctorSearch } = req.body;
     Doctor
@@ -82,5 +87,6 @@ const search = async (req, res) => {
 module.exports = {
     createDoctor,
     login,
+    logout,
     search
 }

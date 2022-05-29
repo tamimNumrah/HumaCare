@@ -24,6 +24,11 @@ router.post("/login", (req, res, next) => {
     controller.doctorController.login(req, res, next);
 });
 
+//logout
+router.get("/logout", (req, res) => {
+    controller.doctorController.logout(req, res);
+});
+
 //Doctor Create
 router.post("/createDoctor", (req,res)=> {
     controller.doctorController.createDoctor(req, res);
