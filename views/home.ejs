@@ -1,167 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <!-- Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <!-- Script tag for Fontawesome-->
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Huma Care</title>
+  <!-- Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Script tag for Fontawesome-->
+  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+    crossorigin="anonymous"></script>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huma Care</title>
 </head>
+
 <body id="Home" class="scrollspy">
-    <!--Navigation Bar-->
-    <div class="navbar-fixed">
-        <nav class="indigo darken-4">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">Huma Care</a>
-                    <a href="#" data-target="mobile-nav" class="sidenav-trigger"> <!-- Used for hamburger icon targetting mobile devices-->
-                        <i class="material-icons">menu</i>
-                      </a>
-                      <ul class="right hide-on-med-and-down"> <!-- hides when the screen size is medium and less than that-->
-                        <li>
-                          <a href="#aboutus">About Us</a>
-                        </li>
-                        <li>
-                          <a href="#contact">Contact</a>
-                        </li>
-                        <li>
-                          <a href="/patients/register" class="btn white indigo-text text-darken-4">SIGNUP</a>
-                        </li>
-                        <li>
-                          <a href="/patients/login" class="btn white indigo-text text-darken-4">LOGIN</a>
-                        </li>
-                        <li>
-                          <a href="/doctors/login" class="btn white indigo-text text-darken-4">Doctor Login</a>
-                        </li>
-                        <li>
-                          <a href="/receptionist/login" class="btn white indigo-text text-darken-4">Receptionist Login</a>
-                        </li>
-                      </ul>
-                </div>
-            </div>
-        </nav>
+  <!--Navigation Bar-->
+  <div class="navbar-fixed">
+    <nav class="indigo darken-4">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Huma Care</a>
+          <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+            <!-- Used for hamburger icon targetting mobile devices-->
+            <i class="material-icons">menu</i>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <!-- hides when the screen size is medium and less than that-->
+            <li>
+              <a href="#aboutus">About Us</a>
+            </li>
+            <li>
+              <a href="#contact">Contact</a>
+            </li>
+            <li>
+              <a href="home?show_registration_modal=true">Get Started</a>
+            </li>
+            <li>
+              <a href="home?show_login_modal=true">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <ul class="sidenav" id="mobile-nav">
+    <!-- hides when the screen size is medium and less than that-->
+    <li>
+      <a href="#aboutus">About Us</a>
+    </li>
+    <li>
+      <a href="#contact">Contact</a>
+    </li>
+    <li>
+      <a href="#login" class="btn white indigo-text text-darken-4">LOGIN/SIGNUP</a>
+    </li>
+  </ul>
+  <% if (show_registration_modal) { %>
+    <!-- Modal Structure -->
+    <div class="row">
+      <div class="col s3"></div>
+      <div class="col s6">
+        <div class="card">
+          <div class="card-content">
+            <p>If you do not have an existing account with us please Register below. If you already have an account, please <a href="home?show_login_modal=true" class="">Login</a> here.</p>
+          </div>
+          <div class="divider"></div>
+          <div class="section center-align">
+            <a href="/patients/register" class="btn white indigo-text text-darken-4">Sign Up as a patient</a>
+          </div>
+          <div class="divider"></div>
+          <div class="section center-align">
+            <a href="/doctors/registration" class="btn white indigo-text text-darken-4">Register as a Doctor</a>
+          </div>
+          <div class="divider"></div>
+          <div class="section center-align">
+            <a href="/receptionist/registration" class="btn white indigo-text text-darken-4">Register as a Receptionist</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s3"></div>
     </div>
-    <ul class="sidenav" id="mobile-nav"> <!-- hides when the screen size is medium and less than that-->
-        <li>
-            <a href="#aboutus">About Us</a>
-          </li>
-          <li>
-            <a href="#contact">Contact</a>
-          </li>
-          <li>
-            <a href="#login" class="btn white indigo-text text-darken-4">LOGIN/SIGNUP</a>
-          </li>
-    </ul>
-    <!--Section Slider-->
-    <section class="slider">
-      <ul class="slides">
-        <li>
-          <img src="assests/hero.jpg"> <!-- random image -->
-          <div class="caption indigo-text text-darken-4 center-align"> 
-          </div>
-        </li>
-        </ul>
-    </section>
-    <!--Features-->
-    <section class="section section-icons white lighten-4 center">
-      <div class="container">
+    <% } %>
+      <% if (show_login_modal) { %>
+        <!-- Modal Structure -->
         <div class="row">
-          <div class="col s12 m4">
-            <div class="card-panel">
-              <i class="material-icons large indigo-text text-darken-4">event_available</i>
-              <h4>Easy consultation booking</h4>
-              <p>Confirm appointments in seconds</p>
+          <div class="col s3"></div>
+          <div class="col s6">
+            <div class="card">
+              <div class="card-content">
+                <p>If you already have an existing account with us please login with credentials. If you don't have an account, please <a href="home?show_registration_modal=true" class="">register</a> here.</p>
+              </div>
+              <div class="divider"></div>
+              <div class="section center-align">
+                <a href="/patients/login" class="btn white indigo-text text-darken-4">Login as a patient</a>
+              </div>
+              <div class="divider"></div>
+              <div class="section center-align">
+                <a href="/doctors/login" class="btn white indigo-text text-darken-4 center-align">Login as a Doctor</a>
+              </div>
+              <div class="divider"></div>
+              <div class="section center-align">
+                <a href="/receptionist/login" class="btn white indigo-text text-darken-4">Login as Receptionist</a>
+              </div>
             </div>
           </div>
-          <div class="col s12 m4">
-            <div class="card-panel">
-              <i class="material-icons large indigo-text text-darken-4">local_hospital</i>
-              <h4>In-clinic consultation</h4>
-              <p>Consultation with choosen doctor</p>
-            </div>
-          </div>
-          <div class="col s12 m4">
-            <div class="card-panel">
-              <i class="material-icons large indigo-text text-darken-4">pregnant_woman</i>
-              <h4>Any health concern</h4>
-              <p>Easy to consult now</p>
-            </div>
-          </div>
+          <div class="col s3"></div>
         </div>
-      </div>
-    </section>
-    <!--Consulations Provided-->
-    <section class="section section-consultation ">
-      <div class="container">
-        <h6><b>Consult top doctor for any health concern</b></h6>
-        <p>In-clinic consultations with verified doctors in all specialists</p>
-        <div id="fixed">
-          <div class="row" id="card-section">
-            <div class="col s2">
-              <div class="card">
-                <div class="card-image">
-                  <img src="assests/card1.jpg" alt="" class="circle">
+        <% } %>
+          <!--Section Slider-->
+          <section class="slider">
+            <ul class="slides">
+              <li>
+                <img src="assests/hero.jpg"> <!-- random image -->
+                <div class="caption indigo-text text-darken-4 center-align">
                 </div>
-                <div class="card-content">Gynaecology</div>
+              </li>
+            </ul>
+          </section>
+          <!--Features-->
+          <section class="section section-icons white lighten-4 center">
+            <div class="container">
+              <div class="row">
+                <div class="col s12 m4">
+                  <div class="card-panel">
+                    <i class="material-icons large indigo-text text-darken-4">event_available</i>
+                    <h4>Easy consultation booking</h4>
+                    <p>Confirm appointments in seconds</p>
+                  </div>
+                </div>
+                <div class="col s12 m4">
+                  <div class="card-panel">
+                    <i class="material-icons large indigo-text text-darken-4">local_hospital</i>
+                    <h4>In-clinic consultation</h4>
+                    <p>Consultation with choosen doctor</p>
+                  </div>
+                </div>
+                <div class="col s12 m4">
+                  <div class="card-panel">
+                    <i class="material-icons large indigo-text text-darken-4">pregnant_woman</i>
+                    <h4>Any health concern</h4>
+                    <p>Easy to consult now</p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="col s2">
-              <div class="card">
-                <div class="card-image">
-                  <img src="assests/card2.jpg" alt="" class="circle">
+          </section>
+          <!--Consulations Provided-->
+          <section class="section section-consultation ">
+            <div class="container">
+              <h6><b>Consult top doctor for any health concern</b></h6>
+              <p>In-clinic consultations with verified doctors in all specialists</p>
+              <div id="fixed">
+                <div class="row" id="card-section">
+                  <div class="col s2">
+                    <div class="card">
+                      <div class="card-image">
+                        <img src="assests/card1.jpg" alt="" class="circle">
+                      </div>
+                      <div class="card-content">Gynaecology</div>
+                    </div>
+                  </div>
+                  <div class="col s2">
+                    <div class="card">
+                      <div class="card-image">
+                        <img src="assests/card2.jpg" alt="" class="circle">
+                      </div>
+                      <div class="card-content">Dermatologist</div>
+                    </div>
+                  </div>
+                  <div class="col s2">
+                    <div class="card">
+                      <div class="card-image">
+                        <img src="assests/card3.jpg" alt="" class="circle">
+                      </div>
+                      <div class="card-content">GeneralPhysician</div>
+                    </div>
+                  </div>
+                  <div class="col s2">
+                    <div class="card">
+                      <div class="card-image">
+                        <img src="assests/card4.jpg" alt="" class="circle">
+                      </div>
+                      <div class="card-content">Pediatrician</div>
+                    </div>
+                  </div>
+                  <div class="col s2">
+                    <div class="card ">
+                      <div class="card-image">
+                        <img src="assests/card5.jpg" alt="" class="circle">
+                      </div>
+                      <div class="card-content">Psycologist</div>
+                    </div>
+                  </div>
+                  <div class="col s2">
+                    <div class="card ">
+                      <div class="card-image">
+                        <img src="assests/card 6.jpg" alt="" class="circle">
+                      </div>
+                      <div class="card-content">Dietitian</div>
+                    </div>
+                  </div>
                 </div>
-                <div class="card-content">Dermatologist</div>
               </div>
             </div>
-            <div class="col s2">
-              <div class="card">
-                <div class="card-image">
-                  <img src="assests/card3.jpg" alt="" class="circle">
-                </div>
-                <div class="card-content">GeneralPhysician</div>
-              </div>
-            </div>
-            <div class="col s2">
-              <div class="card">
-                <div class="card-image">
-                  <img src="assests/card4.jpg" alt="" class="circle">
-                </div>
-                <div class="card-content">Pediatrician</div>
-              </div>
-            </div>
-            <div class="col s2">
-              <div class="card ">
-                <div class="card-image">
-                  <img src="assests/card5.jpg" alt="" class="circle">
-                </div>
-                <div class="card-content">Psycologist</div>
-              </div>
-            </div>
-            <div class="col s2">
-              <div class="card ">
-                <div class="card-image">
-                  <img src="assests/card 6.jpg" alt="" class="circle">
-                </div>
-                <div class="card-content">Dietitian</div>
-              </div>
-            </div>
-        </div>
-      </div>  
-      </div>
-    </section>
-    <!--Footer Section-->
-    <footer class="section indigo darken-2 white-text center">
-        <h2 class="brand-logo">Huma Care</h2>
-        <p class="flow-text">Copyright &copy; 2022, Huma Care.All rights reserved</p>
-      </footer> 
+          </section>
+          <!--Footer Section-->
+          <footer class="section indigo darken-2 white-text center">
+            <h2 class="brand-logo">Huma Care</h2>
+            <p class="flow-text">Copyright &copy; 2022, Huma Care.All rights reserved</p>
+          </footer>
 </body>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-      <!--JavaScript at end of body for optimized loading-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      <script type="text/javascript" src="js/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!--JavaScript at end of body for optimized loading-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+
 </html>
