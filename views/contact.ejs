@@ -7,6 +7,7 @@
     <!--Import materialize.css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/contact.css">
     <!-- Script tag for Fontawesome-->
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
         integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
@@ -20,6 +21,39 @@
     <!--Navigation Bar-->
     <%- include ('./partials/navbar') %>
     <%- include ('./partials/messages') %>
+    <!--Taken from: https://codepen.io/coderfreeman/pen/ExgRzry-->
+    <div class="contact-box">
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" class="validate">
+                <label for="icon_prefix">Name</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">phone</i>
+                <input id="icon_telephone" type="tel" class="validate">
+                <label for="icon_telephone">Telephone</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">email</i>
+                <input id="icon_email" type="email" class="validate">
+                <label for="icon_email">Email</label>
+              </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">edit</i>
+                <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                <label for="icon_prefix2">Message</label>
+              </div>
+            </div>
+                       <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button>
+          </form>
+        </div>
+      </div>
+
     <!--Footer Section-->
     <footer class="section indigo darken-2 white-text center">
         <h2 class="brand-logo">Huma Care</h2>

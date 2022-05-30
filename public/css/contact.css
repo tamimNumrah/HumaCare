@@ -1,0 +1,8 @@
+.row {
+	margin: 30px;
+}
+
+.contact-box {
+	display: flex;
+	justify-content: center;
+}
