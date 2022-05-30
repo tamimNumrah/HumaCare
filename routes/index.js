@@ -14,6 +14,9 @@ router.get("/home", (req, res) => {
         show_login_modal: req.query.show_login_modal
     });
 });
+router.get("/contact", (req, res) => {
+    res.render("contact");
+});
 //register page
 router.get("/register", (req, res) => {
     res.render("register");

@@ -14,34 +14,7 @@
 </head>
 <body>
     <!--Navigation Bar-->
-    <div class="navbar-fixed">
-        <nav class="indigo darken-4 ">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">Huma Care</a>
-                    <a href="#" data-target="mobile-nav" class="sidenav-trigger"> <!-- Used for hamburger icon targetting mobile devices-->
-                        <i class="material-icons">menu</i>
-                      </a>
-                      <ul class="right hide-on-med-and-down"> <!-- hides when the screen size is medium and less than that-->
-                        <li>
-                          <a href="#aboutus">About Us</a>
-                        </li>
-                        <li>
-                          <a href="#contact">Contact</a>
-                        </li>  
-                      </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <ul class="sidenav" id="mobile-nav"> <!-- hides when the screen size is medium and less than that-->
-        <li>
-            <a href="#aboutus">About Us</a>
-          </li>
-          <li>
-            <a href="#contact">Contact</a>
-          </li>
-    </ul>
+    <%- include ('./partials/navbar') %>
     <!-- Login Section-->
     <section>
         <div class="container indigo-text darken-4">
