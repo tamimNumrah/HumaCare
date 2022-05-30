@@ -1,6 +1,8 @@
 const express = require("express");
 const {ensureAuthenticated} = require("../config/auth.js")
 const router = express.Router();
+const controller = require('../controller');
+
 //login page
 router.get("/", (req, res) => {
     res.render("home", {
@@ -16,6 +18,9 @@ router.get("/home", (req, res) => {
 });
 router.get("/contact", (req, res) => {
     res.render("contact");
+});
+router.post("/contact", (req, res, next) => {
+    controller.contactController.postMessage(req, res, next);
 });
 //register page
 router.get("/register", (req, res) => {

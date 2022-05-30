@@ -4,5 +4,6 @@ module.exports={
     clinicController: require('./clinicController'),
     receptionistController: require('./receptionistController'),
     appointmentController: require('./appointmentController'),
-    adminController: require('./adminController')
+    adminController: require('./adminController'),
+    contactController: require('./contactController')
 }

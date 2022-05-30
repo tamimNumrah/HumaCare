@@ -20,39 +20,45 @@
 <body id="Home" class="scrollspy">
     <!--Navigation Bar-->
     <%- include ('./partials/navbar') %>
-    <%- include ('./partials/messages') %>
     <!--Taken from: https://codepen.io/coderfreeman/pen/ExgRzry-->
+    <% if( typeof name =='undefined' ) { %>
+        <% name= "" %>
+        <% phone= "" %>
+        <% email= "" %>
+        <% message= "" %>
+    <% } %>
     <div class="contact-box">
         <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" class="validate">
-                <label for="icon_prefix">Name</label>
-              </div>
-              <div class="input-field col s12">
-                <i class="material-icons prefix">phone</i>
-                <input id="icon_telephone" type="tel" class="validate">
-                <label for="icon_telephone">Telephone</label>
-              </div>
-              <div class="input-field col s12">
-                <i class="material-icons prefix">email</i>
-                <input id="icon_email" type="email" class="validate">
-                <label for="icon_email">Email</label>
-              </div>
-              <div class="input-field col s12">
-                <i class="material-icons prefix">edit</i>
-                <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                <label for="icon_prefix2">Message</label>
-              </div>
-            </div>
-                       <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-          <i class="material-icons right">send</i>
-        </button>
-          </form>
+            <%- include ('./partials/messages') %>
+            <form class="col s12" action="/contact" method="POST">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="icon_prefix" type="text" class="validate" name="name" value="<%= name %>">
+                        <label for="icon_prefix">Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="icon_telephone" type="tel" class="validate" name="phone" value="<%= phone %>">
+                        <label for="icon_telephone">Telephone</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">email</i>
+                        <input id="icon_email" type="email" class="validate" name="email" value="<%= email %>">
+                        <label for="icon_email">Email</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">edit</i>
+                        <textarea id="icon_prefix2" class="materialize-textarea" name="message"><%=message_%></textarea>
+                        <label for="icon_prefix2">Message</label>
+                    </div>
+                </div>
+                <button class="btn indigo white-tex" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
         </div>
-      </div>
+    </div>
 
     <!--Footer Section-->
     <footer class="section indigo darken-2 white-text center">
