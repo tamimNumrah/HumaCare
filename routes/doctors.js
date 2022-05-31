@@ -14,6 +14,9 @@ router.get("/doctorDashboard", (req,res)=> {
 router.get("/registration", (req,res)=> {
     res.render("doctorRegistration");
 });
+router.post("/registration", (req, res) => {
+    controller.doctorController.register(req,res);
+});
 
 //Doctor Login
 router.get("/login", (req,res)=> {
