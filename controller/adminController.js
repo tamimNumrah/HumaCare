@@ -1,4 +1,5 @@
 const Admin = require("../models/admin");
+const Contact = require("../models/contact")
 const passport = require('passport');
 const bcrypt = require("bcrypt");
 
@@ -63,12 +64,46 @@ const register = (req,res) => {
 }
 const login = (req, res, next) => {
     passport.authenticate("admin", {
-        successRedirect: "/adminDashboard",
+        successRedirect: "/admin/dashboard",
         failureRedirect: "/admin/login",
         failureFlash: true
     })(req, res, next);
 };
+
+const logout = (req, res) => {
+    req.logout();
+    req.flash("success_msg", "Now logged out");
+    res.redirect("/admin/login");
+};
+
+const retrieveMessages = (req, res, next) => {
+    Contact
+    .find({})
+    .exec((err, messages) => {
+        res.render("adminMessages", {
+            admin: req.user,
+            messages: messages
+        });    
+    });
+};
+
+const deleteMessage = (req, res, next) => {
+    const { messageId } = req.body;
+    Contact.findByIdAndDelete(messageId)
+    .then(value => {
+        req.flash(
+            "success_msg",
+            "You have now removed a message!"
+        ); // show success flsash message
+        retrieveMessages(req, res, next);
+    })
+    .catch(value => console.log(value));
+};
+
 module.exports = {
     register,
-    login
+    login,
+    logout,
+    retrieveMessages,
+    deleteMessage
 }

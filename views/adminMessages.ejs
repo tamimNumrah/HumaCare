@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <!-- Script tag for Fontawesome-->
+  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+    crossorigin="anonymous"></script>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huma Care</title>
+</head>
+<body>
+    <!--Navigation Bar-->
+    <div class="navbar-fixed">
+        <nav class="indigo darken-4">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">Huma Care</a>
+                    <a href="#" data-target="mobile-nav" class="sidenav-trigger"> <!-- Used for hamburger icon targetting mobile devices-->
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down"> <!-- hides when the screen size is medium and less than that-->
+                        <li>
+                            <a href="/admin/dashboard" class="btn white indigo-text text-darken-4">Dashboard</a>
+                        </li>
+                        <li>
+                          <a href="/admin/logout" class="btn white indigo-text text-darken-4">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <ul class="sidenav" id="mobile-nav"> <!-- hides when the screen size is medium and less than that-->
+        <li>
+            <a href="/admin/dashboard" class="btn white indigo-text text-darken-4">Dashboard</a>
+        </li>
+        <li>
+          <a href="/admin/logout" class="btn white indigo-text text-darken-4">Logout</a>
+        </li>
+    </ul>
+    
+    <!-- Section to view appointments list-->
+    <section>
+        <div class="container">
+            <div class="row">
+                <table class="white responsive-table centered">
+                    <%- include ('./partials/messages') %>
+                    <thead>
+                        <thead class="indigo-text">
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Message</th>                            
+                            <th></th>
+                        </thead>
+                    </thead>
+                    <% if(typeof messages!='undefined' ) { %>
+                    <% for(var i=0; i<messages.length; i++) { %>
+                    <tbody>
+                        <tr>
+                            <td><%= messages[i].name %></td>
+                            <td><%= messages[i].email %></td>
+                            <td><%= messages[i].phone %></td>
+                            <td><%= messages[i].message %></td>
+                            <td><form action="/admin/deleteMessage" class="input-field" method="POST">
+                                <input type="hidden"  id="messageId" value= "<%=messages[i]._id%>"" name="messageId">
+                                <input type="submit" value="Delete Message" class="btn red darken-4 white-text" id="cancelSubmit"></form></td>
+                        </tr>
+                    </tbody>
+                    <% } %>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>
