@@ -39,5 +39,10 @@ router.get("/appointments", (req, res) => {
     controller.appointmentController.doctorAppointments(req, res);
 });
 
+//Change passwords
+router.get("/changePassword",(req,res)=>{
+    res.render("doctorChangePassword");
+});
+
 
 module.exports = router;
