@@ -5,9 +5,7 @@ const {ensureAuthenticated} = require("../config/auth.js");
 
 //Doctors dashboard
 router.get("/doctorDashboard", (req,res)=> {
-    res.render("doctorDashboard", {
-        doctor: req.user
-    });
+    controller.doctorController.doctorDashboard(req, res);
 });
 
 //Doctors registration

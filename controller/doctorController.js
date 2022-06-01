@@ -84,9 +84,19 @@ const search = async (req, res) => {
         });
 }
 
+const doctorDashboard = async (req, res, next) => {
+    console.log(req.user);
+    const clinic = await Clinic.findById({_id: req.user.clinic});
+    res.render("doctorDashboard", {
+        doctor: req.user,
+        clinic: clinic
+    });
+};
+
 module.exports = {
     createDoctor,
     login,
     logout,
-    search
+    search,
+    doctorDashboard
 }

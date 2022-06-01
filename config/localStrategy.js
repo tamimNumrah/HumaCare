@@ -100,7 +100,6 @@ module.exports = function(passport) {
                             doctor.password,
                             (err, isMatch) => {
                                 if (err) throw err;
-
                                 if (isMatch) {
                                     return done(null, doctor);
                                 } else {
