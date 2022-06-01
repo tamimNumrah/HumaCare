@@ -14,5 +14,61 @@
 </head>
 <body>
     <!--Navigation Bar-->
-    
+    <div class="navbar-fixed">
+        <nav class="indigo darken-4">
+          <div class="container">
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo">Huma Care</a>
+              <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+                <!-- Used for hamburger icon targetting mobile devices-->
+                <i class="material-icons">menu</i>
+              </a>
+              <ul class="right hide-on-med-and-down">
+                <!-- hides when the screen size is medium and less than that-->
+                
+                <li>
+                  <a href="/receptionist/login" class="btn white indigo-text text-darken-4">Login</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <ul class="sidenav" id="mobile-nav">
+        <!-- hides when the screen size is medium and less than that-->
+        
+        <li>
+          <a href="/receptionist/login" class="btn white indigo-text text-darken-4">Login</a>
+        </li>
+      </ul>
+      <!-- Registration Form-->
+      <section>
+          <div class="container">
+              <div class="row">
+                <div class="col s6 card-panel indigo-text text-darken-4">
+                    <form action="#" method="post">
+                        <h3>Receptionist Registration</h3>
+                        <%- include ('./partials/messages') %>
+                        <div class="input-field">
+                            <label>Name</label><br>
+                                <input type="text" id="receptionistName" name="name"><br>
+                        </div>
+                        <div class="input-field">
+                            <label for="">Email</label><br>
+                            <input type="email" id="email" name="email"><br>
+                        </div>
+                        <div class="input-field">
+                            <label>Gender</label><br>
+                            <input type="text" id="gender" name="gender"><br>
+                        </div>
+                        <div class="input-field">
+                            <label>Clinic</label><br>
+                            <input type="text" id="clinic" name="clinicId"><br>
+                        </div>
+                        <input type="submit" value="Submit" class="btn indigo white-text" id="formSubmit">
+                    </form>
+                </div>
+              </div>
+          </div>
+      </section>
 </body>
