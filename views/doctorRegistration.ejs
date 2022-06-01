@@ -25,20 +25,18 @@
                 <div class="row">
                     <!-- Register slide-->
                     <div class="col s6">
-                        <form action="/doctors/registration" method="GET">
+                        <%- include ('./partials/messages') %>
+                        <form action="/doctors/registration" method="POST">
                             <h2>Patients are looking for doctors like you</h2><br>
                             <h6>Millions of patients are looking for the right doctor on HumaCare. Start your digital
                                 journey with Huma Care Profile</h6>
                             <p>Let's take the first step and create your account</p>
-                            <%- include ('./partials/messages') %>
                             <div class="input-field">
-                                <input id="email" type="email" class="validate">
+                                <input id="email" type="email" name="email" class="validate">
                                 <label for="email" class="indigo-text text-darken-4">Email</label>
                             </div>
                             <p>Note: Email will be sent to this email for verification.</p>
-                            <div class="btn indigo darken-4 white-text" type="submit" name="action">Submit
-                                <i class="material-icons right">send</i>
-                            </div>
+                            <input type="submit" value="Submit" class="btn indigo white-text" id="formSubmit">
                             <p>If you already have an account.Please <a href="/doctors/login" class="">login</a> here
                             </p>
                         </form>
@@ -70,11 +68,7 @@
                 </div>
             </div>
         </section>
-        <!--Footer Section-->
-        <footer class="section white indigo-text text-darken-4 center">
-            <h2 class="brand-logo">Huma Care</h2>
-            <p class="flow-text">Copyright &copy; 2022, Huma Care.All rights reserved</p>
-        </footer>
+        <%- include ('./partials/footer') %>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
