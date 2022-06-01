@@ -67,6 +67,12 @@ jobs:
             file: ./Dockerfile
             push: true
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/humacare:latest
+        - name: Docker Hub Description
+          uses: peter-evans/dockerhub-description@v2
+          env:
+            DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+            DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+            DOCKERHUB_REPOSITORY: tamimibnaman/humacare
           
         - name: Run the image in a container
           uses: addnab/docker-run-action@v3
