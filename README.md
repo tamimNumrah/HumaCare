@@ -15,6 +15,24 @@ As pressure on health systems increases and the complexity of health care increa
 
 Node.js
 
+### How to install Node.js and npm
+
+1. Navigate to `yml https://nodejs.org/en/download/ ` and download the installer for your machine.The Node.js installer includes the NPM package manager.
+2. Once the installer is downloaded launch it.
+3. The system will ask if you want to run the software – click Run.
+4. You will be welcomed to the Node.js Setup Wizard – click Next.
+5. On the next screen agree to the license agreement. Click Next and install the software.
+6. Choose the location you want to install node.js.
+7. Finally, click the Install button to run the installer. When it finishes, click Finish.
+8. To verify the installation open the command prompt and enter
+   ```yml
+   node -v
+   ```
+   The system should display the version of Node.js installed. Similarly do the same for npm
+   ```yml
+   npm -v
+   ```
+
 ## Installation
 
 ```yml
