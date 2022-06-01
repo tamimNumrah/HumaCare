@@ -1,15 +1,36 @@
 # HumaCare
 
+As pressure on health systems increases and the complexity of health care increases, waiting for health services increases. Our product is for the medical clinics to provide an efficient and economical way of booking appointments.
 
-# Dependencies 
+## Features
+
+..1. User registration and Login
+2.Searching for Doctor
+3.Booking Appointment at your convenience
+4.Doctor easy access to appointment bookings
+5.Receptionist easy access to appointment bookings
+6.Contact Form
+
+## Dependencies
+
 Node.js
 
-# Run
+## Installation
+
 ```yml
-$npm run start
+$ git clone https://github.com/tamimNumrah/HumaCare.git
+$ cd ../path/to/the/file
+$ npm install
 ```
 
-# Test
+## To Run the application
+
+```yml
+$npm start
+```
+
+## Test
+
 ```yml
 $npm run test
 ```
