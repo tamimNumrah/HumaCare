@@ -91,7 +91,7 @@ const register = (req, res) => {
                 to: email,
                 subject: 'Doctor Registration Confirmation',
                 text: 'Welcome to HumaCare',
-                html: '<p>To complete your registration, please provide your doctor ID lisense and would take 48hrs to verify your details.</p>'
+                html: '<h3>Thanks for registering with Huma Care<h3><br><p>To complete your registration, please provide your doctor ID lisense and would take 48hrs to verify your details.</p>'
             });
 
             console.log("Message sent: %s", info.messageId);
