@@ -2,6 +2,7 @@ const Appointment = require("../models/appointment");
 const Doctor = require("../models/doctor");
 const url = require('url');    
 const Patient = require("../models/patient");
+const Receptionist = require("../models/receptionist");
 
 const retrieveAppointments = (req, res) => { //retrieve appointments for a doctor
     const { appointment, doctorId } = req.query; //extract the values
@@ -90,6 +91,23 @@ const doctorAppointments = (req, res) => {
     });
 };
 
+const receptionistAppointments = (req, res) => {
+    let start = new Date();
+    const clinicId = req.user.clinic
+    let query = {appointmentDate: {$gte:start} };
+    Appointment
+    .find({ $and: [query, {clinic: clinicId}]})
+    .populate('doctor')
+    .populate('patient')
+    .populate('clinic')
+    .exec((err, appointments)=> {
+        res.render("receptionistAppointments", {
+            receptionist: req.user,
+            appointments:appointments
+        })
+    })
+}
+
 const getSlotText = slot => {
     let slotText;
     switch (slot) {
@@ -150,5 +168,6 @@ module.exports = {
     cancelAppointment,
     patientAppointments,
     doctorAppointments,
+    receptionistAppointments,
     getSlotText
 };

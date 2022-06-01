@@ -27,5 +27,9 @@ router.post("/createReceptionist", (req,res)=> {
     controller.receptionistController.createReceptionist(req, res);
 });
 
+router.get("/appointments", (req, res) => {
+    controller.appointmentController.receptionistAppointments(req, res);
+});
+
 
 module.exports = router;
