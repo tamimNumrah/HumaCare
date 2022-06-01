@@ -1,7 +1,15 @@
 # HumaCare
 
-#Dependencies 
+
+# Dependencies 
 Node.js
 
-#Run
+# Run
+```yml
 $npm run start
+```
+
+# Test
+```yml
+$npm run test
+```
