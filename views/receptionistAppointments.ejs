@@ -48,5 +48,39 @@
           <a href="/receptionist/logout" class="btn white indigo-text text-darken-4">Logout</a>
         </li>
       </ul>
-      
+      <!-- Section to view appointments list-->
+    <%- include ('../public/js/appointmentFunctions.ejs') %>
+    <%- include ('./partials/messages') %>
+    <section>
+        <div class="container">
+            <div class="row">
+                <table class="white responsive-table centered">
+                    <thead>
+                        <thead class="indigo-text">
+                            <th>Patient</th>
+                            <th>Doctor</th>
+                            <th>Slot</th>
+                            <th>Date</th>
+                            <th>Clinic</th>
+                            
+                        </thead>
+                    </thead>
+                    <% if(typeof appointments!='undefined' ) { %>
+                    <% for(var i=0; i<appointments.length; i++) { %>
+                    <tbody>
+                        <tr>
+                            <td><%= appointments[i].patient.name %></td>
+                            <td><%= appointments[i].doctor.name %></td>
+                            <td><%= parsedSlot(appointments[i].slot) %></td>
+                            <td><%= appointments[i].appointmentDate.toDateString() %></td>
+                            <td><%= appointments[i].clinic.name %></td>
+                        </tr>
+                    </tbody>
+                    <% } %>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+    </section>
+
 </body>
