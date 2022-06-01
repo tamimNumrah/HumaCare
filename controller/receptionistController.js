@@ -74,9 +74,15 @@ const receptionistDashboard = async (req, res, next) => {
         clinic: clinic
     });
 };
+const logout =(req,res)=> {
+    req.logout();
+    req.flash("success_msg", "Now logged out");
+    res.redirect("/receptionist/login");
+}
 
 module.exports = {
     createReceptionist,
     login,
-    receptionistDashboard
+    receptionistDashboard,
+    logout
 }

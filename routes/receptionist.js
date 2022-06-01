@@ -26,9 +26,14 @@ router.post("/login",(req, res, next)=> {
 router.post("/createReceptionist", (req,res)=> {
     controller.receptionistController.createReceptionist(req, res);
 });
-
+//Receptionist appointments
 router.get("/appointments", (req, res) => {
     controller.appointmentController.receptionistAppointments(req, res);
+});
+
+//Receptionist Logout
+router.get("/logout", (req,res)=> {
+    controller.receptionistController.logout(req,res);
 });
 
 
