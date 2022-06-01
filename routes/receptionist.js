@@ -6,7 +6,8 @@ const {ensureAuthenticated} = require("../config/auth.js");
 
 //Receiptionist dashboard
 router.get("/dashboard", (req,res)=> {
-    res.render("receptionistDashboard");
+    controller.receptionistController.receptionistDashboard(req, res);
+    
 });
 
 //Receiptionist Register
