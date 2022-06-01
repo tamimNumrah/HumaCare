@@ -40,8 +40,13 @@ router.get("/appointments", (req, res) => {
 });
 
 //Change passwords
-router.get("/changePassword",(req,res)=>{
-    res.render("doctorChangePassword");
+router.get("/changePassword", ensureAuthenticated, (req, res) => {
+    res.render("doctorChangePassword", {
+        doctor: req.user
+    });
+});
+router.post("/changePassword", (req, res, next) => {
+    controller.doctorController.changePassword(req, res, next);
 });
 
 
