@@ -31,4 +31,7 @@ router.get("/dashboard", ensureAuthenticated, (req, res) => {
         patient: req.user
     });
 });
+router.get("/about", (req, res) => {
+    res.render("aboutUs");
+});
 module.exports = router;
