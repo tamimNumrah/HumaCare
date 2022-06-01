@@ -13,6 +13,7 @@ router.get("/registration", (req,res)=> {
     res.render("doctorRegistration");
 });
 router.post("/registration", (req, res) => {
+    console.log('ddd')
     controller.doctorController.register(req,res);
 });
 
