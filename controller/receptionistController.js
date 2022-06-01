@@ -1,6 +1,7 @@
 const Receptionist = require("../models/receptionist");
 const Clinic = require("../models/clinic");
 const bcrypt = require("bcrypt");
+const passport = require("passport");
 
 const createReceptionist = async (req, res) => {
     const { name, gender, email, password, clinicId} = req.body; //extract the values
@@ -57,6 +58,15 @@ const createReceptionist = async (req, res) => {
     });
 }
 
+const login = (req, res, next)=> {
+    passport.authenticate("receptionist", {
+        successRedirect:"/receptionist/dashboard",
+        failureRedirect: "/receptionist/login",
+        failureFlash: true
+    })(req, res, next);
+};
+
 module.exports = {
-    createReceptionist
+    createReceptionist,
+    login
 }

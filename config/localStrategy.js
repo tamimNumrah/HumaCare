@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const Patient = require("../models/patient");
 const Admin = require("../models/admin");
 const Doctor = require("../models/doctor");
+const Receptionist = require("../models/receptionist");
 
 module.exports = function(passport) {
     passport.use(
@@ -116,6 +117,41 @@ module.exports = function(passport) {
             }
         )
     );
+    passport.use(
+        'receptionist',
+        new LocalStrategy( // user localStrategy strategy
+            { usernameField: "email" },
+            (email, password, done) => {
+                //match Doctor
+                Receptionist.findOne({ email: email })
+                    .then(receptionist => {
+                        if (!receptionist) {
+                            return done(null, false, {
+                                message: "that email is not registered"
+                            });
+                        }
+                        //match pass
+                        bcrypt.compare(
+                            password,
+                            receptionist.password,
+                            (err, isMatch) => {
+                                if (err) throw err;
+                                if (isMatch) {
+                                    return done(null, receptionist);
+                                } else {
+                                    return done(null, false, {
+                                        message: "Password is not correct"
+                                    });
+                                }
+                            }
+                        );
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            }
+        )
+    );
 
     passport.serializeUser(function(user, done) {
         if (user.constructor.modelName == "Patient") {
@@ -136,7 +172,14 @@ module.exports = function(passport) {
                 type: "Doctor"
             }
             done(null, key);
+        } else if (user.constructor.modelName == "Receptionist") {
+            var key = {
+                id: user.id,
+                type: "Receptionist"
+            }
+            done(null, key);
         }
+
     });
 
     passport.deserializeUser(function(key, done) {
@@ -151,6 +194,10 @@ module.exports = function(passport) {
         } else if (key.type == "Doctor") {
             Doctor.findById(key.id, function(err, doctor) {
                 done(err, doctor);
+            });
+        } else if (key.type == "Receptionist") {
+            Receptionist.findById(key.id, function(err, receiptionist) {
+                done(err, receiptionist);
             });
         }
     });

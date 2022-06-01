@@ -18,6 +18,9 @@ router.get("/registration", (req,res)=> {
 router.get("/login", (req,res)=> {
     res.render("receptionistLogin");
 });
+router.post("/login",(req, res, next)=> {
+    controller.receptionistController.login(req, res, next);
+})
 
 //Receptionist Create
 router.post("/createReceptionist", (req,res)=> {
