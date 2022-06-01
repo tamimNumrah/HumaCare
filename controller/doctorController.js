@@ -2,27 +2,28 @@ const Doctor = require("../models/doctor");
 const Clinic = require("../models/clinic");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
+const nodemailer = require("nodemailer");
 
 const createDoctor = async (req, res) => {
-    const { name, gender, email, password, specialization, clinicId, available} = req.body; //extract the values
+    const { name, gender, email, password, specialization, clinicId, available } = req.body; //extract the values
     console.log("Doctor Name " + name + " email :" + email + " pass:" + password);
 
     if (!name || !gender || !email || !password || !specialization || !clinicId || !available) {
-        res.status(400).json({success: false, message:"Please fill in all fields"});
+        res.status(400).json({ success: false, message: "Please fill in all fields" });
     }
     if (password.length < 6) {
-        res.status(400).json({success: false, message:"Password needs to be atleast 6 characters"});
+        res.status(400).json({ success: false, message: "Password needs to be atleast 6 characters" });
     }
-    const clinic = await Clinic.findById({_id: clinicId});
+    const clinic = await Clinic.findById({ _id: clinicId });
     if (clinic == null) {
-        res.status(400).json({success: false, message:"Clinic id does not match with existing clinics"});
+        res.status(400).json({ success: false, message: "Clinic id does not match with existing clinics" });
     }
     Doctor.findOne({ email: email }).exec((err, doctor) => {
         console.log(doctor);
         if (doctor) {
             //user already exists
-            res.status(400).json({success: false, message:"Doctor already exists"});
-        } else {            
+            res.status(400).json({ success: false, message: "Doctor already exists" });
+        } else {
             const newDoctor = new Doctor({
                 name: name,
                 gender: gender,
@@ -45,20 +46,62 @@ const createDoctor = async (req, res) => {
                             console.log(value);
                             clinic.doctors.push(newDoctor);
                             clinic
-                            .save()
-                            .then(value => {
-                                res.status(201).json({success:true, data: newDoctor });
-                            });
+                                .save()
+                                .then(value => {
+                                    res.status(201).json({ success: true, data: newDoctor });
+                                });
                         })
                         .catch(value => {
                             console.log(value)
-                            res.status(400).json({success: false, message:value});
+                            res.status(400).json({ success: false, message: value });
                         });
                 })
             );
         }
     });
 }
+
+const register = (req, res) => {
+    const { email } = req.body;
+
+    let errors = [];
+    console.log("email:" + email);
+    if (!email) {
+        errors.push({ msg: "Please fill in your email" });
+    } else {
+        async function main() {
+
+            //create reusable transporter object
+            let transporter = nodemailer.createTransport({
+                host: "outlook.com",
+                port: 587,
+                secure: false,
+                auth: {
+                    user: 'humacareregister@outlook.com',
+                    pass: 'admin123humacare'
+                },
+                tls: {
+                    rejectUnauthorized: false
+                }
+            });
+
+            // send mail with defined transport object
+            let info = await transporter.sendMail({
+                from: '"HumaCare Registration" <humacareregister@outlook.com>',
+                to: email,
+                subject: 'Doctor Registration Confirmation',
+                text: 'Welcome to HumaCare',
+                html: '<p>To complete your registration, please provide your doctor ID lisense and would take 48hrs to verify your details.</p>'
+            });
+
+            console.log("Message sent: %s", info.messageId);
+            console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        }
+        main().catch(console.error);
+    }
+    res.redirect("/doctors/login");
+};
+
 const login = (req, res, next) => {
     passport.authenticate("doctor", {
         successRedirect: "/doctors/doctorDashboard",
@@ -75,7 +118,7 @@ const search = async (req, res) => {
     const { doctorSearch } = req.body;
     Doctor
         .find(
-            { $text: { $search: doctorSearch }})
+            { $text: { $search: doctorSearch } })
         .populate('clinic')
         .exec((err, docs) => {
             res.render("dashboard", {
@@ -86,7 +129,7 @@ const search = async (req, res) => {
 
 const doctorDashboard = async (req, res, next) => {
     console.log(req.user);
-    const clinic = await Clinic.findById({_id: req.user.clinic});
+    const clinic = await Clinic.findById({ _id: req.user.clinic });
     res.render("doctorDashboard", {
         doctor: req.user,
         clinic: clinic
@@ -166,5 +209,6 @@ module.exports = {
     logout,
     search,
     doctorDashboard,
-    changePassword
+    changePassword,
+    register
 }
