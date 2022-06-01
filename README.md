@@ -34,3 +34,7 @@ $npm start
 ```yml
 $npm run test
 ```
+
+### Key words
+
+Doctor, Patient, Receptionist, Appointments
