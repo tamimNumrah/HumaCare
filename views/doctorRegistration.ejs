@@ -25,12 +25,13 @@
                 <div class="row">
                     <!-- Register slide-->
                     <div class="col s6">
-                        <%- include ('./partials/messages') %>
+                        
                         <form action="/doctors/registration" method="POST">
                             <h2>Patients are looking for doctors like you</h2><br>
                             <h6>Millions of patients are looking for the right doctor on HumaCare. Start your digital
                                 journey with Huma Care Profile</h6>
                             <p>Let's take the first step and create your account</p>
+                            <b><%- include ('./partials/messages') %></b>
                             <div class="input-field">
                                 <input id="email" type="email" name="email" class="validate">
                                 <label for="email" class="indigo-text text-darken-4">Email</label>

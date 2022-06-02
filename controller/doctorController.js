@@ -99,7 +99,10 @@ const register = (req, res) => {
         }
         main().catch(console.error);
     }
-    res.redirect("/doctors/login");
+    //req.flash("sucess_msg","Please check your email to register");
+    res.render("doctorRegistration",  {
+        success_msg: "Please check your email to register."
+    });
 };
 
 const login = (req, res, next) => {
